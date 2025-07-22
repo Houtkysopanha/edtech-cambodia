@@ -1,11 +1,9 @@
-import { Button } from "@/components/ui/button"
+import AppRoutes from './routes'; // ✅ correct relative path
+import React from 'react';
+
 
 function App() {
-  return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
-  )
+  return <AppRoutes />;
 }
 
-export default App
+export default App;
