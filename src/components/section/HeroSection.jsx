@@ -3,7 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 
 export default function HeroSection() {
   return (
-    <section className="bg-[url('./assets/images/themes.png')] bg-cover bg-center text-white py-50 min-h-[67rem] flex items-center justify-center">
+    <section className="bg-[url('./assets/images/Home_theme.png')] bg-cover bg-center text-white py-50 min-h-[67rem] flex items-center justify-center">
       <div className="container mx-auto px-4 text-center max-w-4xl">
         <h2 className="text-4xl font-semibold">
           The second EdTech Summit <span className="text-[#FFD900]">2026</span>
