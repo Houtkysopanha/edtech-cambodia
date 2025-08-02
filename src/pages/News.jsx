@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaSearch, FaCalendarAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-
+import theme from "@/assets/images/themes.png"
 // Sample news data - you can replace this with actual data from an API
 const newsData = [
   {
@@ -181,35 +181,24 @@ export default function News() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="relative text-white py-20" style={{
-        backgroundImage: `url('/images/themes.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        
-        <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="block text-3xl md:text-4xl mb-2">ព័ត៌មាន</span>
-            <span className="text-yellow-400">News</span>
-          </h1>
-          <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-            Here is our news that related to our event.
-          </p>
-        </div>
-      </div>
+      <section
+       className="relative bg-cover bg-center py-20 md:py-32 text-white flex items-center justify-center overflow-hidden"
+       style={{ backgroundImage: `url(${theme})` }} // ✅ Fix here
+     >
+        <div className="absolute inset-0 bg-blue-900/30 z-0" />
+       {/* Remove the <img /> — it's not needed */}
+       <div className="relative z-10 text-center  px-4 py-6 rounded">
+         <h1 className="text-4xl khmer-text md:text-6xl font-bold mb-4">ព្រឹត្តិការណ៍</h1>
+         <h2 className="text-2xl md:text-6xl font-semibold mb-4 text-[#FFD900]">News</h2>
+         <p className="text-lg md:text-xl">
+           Here is our News that related to our even.
+         </p>
+       </div>
+     </section>
+ <main className="container mx-auto px-6 md:px-12 py-8 md:py-12">
+      {/* Main Content Card */}
 
-      {/* Main Content - Overlapping the hero section */}
-      <div className="container mx-auto px-4 -mt-16 relative z-10" style={{ 
-        backgroundColor: 'white', 
-        paddingTop: '4rem', 
-        paddingBottom: '4rem', 
-        marginTop: '-2rem', 
-        borderRadius: '20px', 
-        boxShadow: '0 6px 8px rgba(0, 0, 0, 0.1)',
-        marginBottom: '4rem',
+        <div className="container bg-white mx-auto p-8 md:p-12 rounded-2xl shadow-lg -mt-16  z-20 relative" style={{ 
        
       }}>
         {/* Search and Filter Section */}
@@ -222,7 +211,7 @@ export default function News() {
             <div className="relative flex-1 max-w-md">
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" />
               <div className="relative rounded-[15px] p-[1px]" style={{
-                background: 'linear-gradient(45deg, rgba(255,0,0,0.6), rgba(255,127,0,0.6), rgba(255,255,0,0.6), rgba(0,255,0,0.6), rgba(0,0,255,0.6), rgba(75,0,130,0.6), rgba(148,0,211,0.6))'
+                background: 'linear-gradient(135deg,  #DEB128, #DC5D3B, #E12045, #953773, #3843B3)'
               }}>
                 <input
                   type="text"
@@ -239,7 +228,7 @@ export default function News() {
               <div className="flex items-center gap-2">
                 <label className="text-gray-600 font-medium">Sort by</label>
                 <div className="relative rounded-[15px] p-[1px]" style={{
-                  background: 'linear-gradient(45deg, rgba(255,0,0,0.6), rgba(255,127,0,0.6), rgba(255,255,0,0.6), rgba(0,255,0,0.6), rgba(0,0,255,0.6), rgba(75,0,130,0.6), rgba(148,0,211,0.6))'
+                  background: 'linear-gradient(135deg,  #DEB128, #DC5D3B, #E12045, #953773, #3843B3)'
                 }}>
                   <button
                     onClick={() => {
@@ -260,7 +249,7 @@ export default function News() {
 
               {/* View Mode Toggle */}
               <div className="rounded-[15px] p-[1px]" style={{
-                background: 'linear-gradient(45deg, rgba(255,0,0,0.6), rgba(255,127,0,0.6), rgba(255,255,0,0.6), rgba(0,255,0,0.6), rgba(0,0,255,0.6), rgba(75,0,130,0.6), rgba(148,0,211,0.6))'
+                background: 'linear-gradient(135deg,  #DEB128, #DC5D3B, #E12045, #953773, #3843B3)'
               }}>
                 <div className="flex items-center rounded-[14px] overflow-hidden bg-white">
                   <button
@@ -300,7 +289,7 @@ export default function News() {
             <div key={news.id} className={`rounded-[20px] p-[1px] hover:shadow-xl transition-shadow duration-300 ${
               viewMode === 'list' ? 'w-full' : ''
             }`} style={{
-              background: 'linear-gradient(135deg, rgba(255,0,0,0.6), rgba(255,127,0,0.6), rgba(255,255,0,0.6), rgba(0,255,0,0.6), rgba(0,0,255,0.6), rgba(75,0,130,0.6), rgba(148,0,211,0.6))',
+              background: 'linear-gradient(135deg,  #DEB128, #DC5D3B, #E12045, #953773, #3843B3)',
               boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
             }}>
               <div className={`bg-white rounded-[19px] overflow-hidden h-full ${
@@ -355,7 +344,7 @@ export default function News() {
           <div className="flex justify-center py-8">
             {/* Pagination Container with elegant rounded border */}
             <div className="rounded-full p-[3px]" style={{
-              background: 'linear-gradient(135deg, #FFB347, #FFCCCB, #DDA0DD, #98FB98, #87CEEB, #F0E68C)',
+              background: 'linear-gradient(135deg,  #DEB128, #DC5D3B, #E12045, #953773, #3843B3)',
               boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)'
             }}>
               <div className="bg-white rounded-full px-10 py-5 flex items-center gap-4">
@@ -438,6 +427,10 @@ export default function News() {
           </div>
         )}
       </div>
+    </main>
+
+
+
     </div>
   );
 }
