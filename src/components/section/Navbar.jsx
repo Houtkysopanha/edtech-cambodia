@@ -53,16 +53,18 @@ export default function Navbar() {
       {/* Middle Logo */}
       <div className="bg-white py-3">
         <div className="flex justify-between items-center px-52">
-          <img
-            src={logo}
-            alt="EdTech Cambodia Logo"
-            className="h-20 sm:h-20"
-          />
-          <div className="flex justify-between text-[#0a1d53] items-center px-6 py-3 gap-10">
-            <nav className="flex space-x-8 text-sm sm:text-base font-semibold text-center">
-              <Link to="/about" className="khmer-text hover:text-yellow-400">អំពីយើង<br />About Us</Link>
-              
-              {/* Our Work Dropdown */}
+          <Link to="/">
+            <img
+              src={logo}
+              alt="EdTech Cambodia Logo"
+              className="h-20 sm:h-20 cursor-pointer"
+            />
+          </Link>
+            <div className="flex justify-between text-[#0a1d53] items-center px-6 py-3 gap-10">
+              <nav className="flex space-x-8 text-sm sm:text-base font-semibold text-center">
+                <Link to="/about" className="khmer-text hover:text-yellow-400">អំពីយើង<br />About Us</Link>
+
+                {/* Our Work Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsOurWorkDropdownOpen(!isOurWorkDropdownOpen)}

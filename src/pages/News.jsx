@@ -65,6 +65,41 @@ const newsData = [
     date: "June 20, 2024",
     image: "/images/img1-news.png",
     category: "Lecture"
+  },
+  {
+    id: 10,
+    title: "Annual Science Fair",
+    date: "April 10, 2024",
+    image: "/images/img1-news.png",
+    category: "Event"
+  },
+  {
+    id: 11,
+    title: "Literature Festival",
+    date: "October 5, 2024",
+    image: "/images/img2-news.png",
+    category: "Festival"
+  },
+  {
+    id: 12,
+    title: "Workshop on AI",
+    date: "March 15, 2024",
+    image: "/images/img3-news.png",
+    category: "Workshop"
+  },
+  {
+    id: 13,
+    title: "Annual Science Fair",
+    date: "April 10, 2024",
+    image: "/images/img4-news.png",
+    category: "Event"
+  },
+  {
+    id: 14,
+    title: "Robot Lecture Series",
+    date: "June 20, 2024",
+    image: "/images/img1-news.png",
+    category: "Lecture"
   }
 ];
 
@@ -311,86 +346,85 @@ export default function News() {
           ))}
         </div>
 
-        {/* Pagination */}
+        {/* Pagination - Enhanced to match photo design */}
         {totalPages > 1 && (
           <div className="flex justify-center py-8">
-            {/* Pagination Container with Rounded Border */}
-            <div className="rounded-full p-[2px]" style={{
-              background: 'linear-gradient(45deg, rgba(255,0,0,0.6), rgba(255,127,0,0.6), rgba(255,255,0,0.6), rgba(0,255,0,0.6), rgba(0,0,255,0.6), rgba(75,0,130,0.6), rgba(148,0,211,0.6))'
+            {/* Pagination Container with elegant rounded border */}
+            <div className="rounded-full p-[3px]" style={{
+              background: 'linear-gradient(135deg, #FFB347, #FFCCCB, #DDA0DD, #98FB98, #87CEEB, #F0E68C)',
+              boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)'
             }}>
-              <div className="bg-white rounded-full px-6 py-3 flex items-center gap-2">
+              <div className="bg-white rounded-full px-10 py-5 flex items-center gap-4">
                 {/* Previous Button */}
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-gray-600 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  className="w-12 h-12 rounded-full flex items-center justify-center text-gray-600 hover:text-blue-700 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300 hover:bg-blue-50 hover:scale-105"
                   aria-label="Previous page"
                 >
-                  <FaChevronLeft className="text-sm" />
+                  <FaChevronLeft className="text-base" />
                 </button>
-                
-                {/* Page Numbers */}
-                {getVisiblePages().map((page, index) => {
-                  if (page === '...') {
+                <div className="flex items-center gap-2">
+                  {getVisiblePages().map((page, index) => {
+                    if (page === '...') {
+                      return (
+                        <span key={index} className="px-4 text-gray-400 select-none text-base font-medium">
+                          ...
+                        </span>
+                      );
+                    }
+                    
                     return (
-                      <span key={index} className="px-2 text-gray-400 select-none text-sm">
-                        ...
-                      </span>
+                      <button
+                        key={page}
+                        onClick={() => handlePageChange(page)}
+                        className={`w-12 h-12 rounded-full flex items-center justify-center text-base font-bold transition-all duration-300 ${
+                          currentPage === page
+                            ? 'bg-blue-900 text-white shadow-lg scale-110 ring-2 ring-blue-200'
+                            : 'text-gray-700 hover:text-blue-700 hover:bg-blue-50 hover:scale-105'
+                        }`}
+                        aria-label={`Go to page ${page}`}
+                        aria-current={currentPage === page ? 'page' : undefined}
+                      >
+                        {page}
+                      </button>
                     );
-                  }
-                  
-                  return (
-                    <button
-                      key={page}
-                      onClick={() => handlePageChange(page)}
-                      className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all ${
-                        currentPage === page
-                          ? 'bg-blue-900 text-white shadow-sm'
-                          : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                      }`}
-                      aria-label={`Go to page ${page}`}
-                      aria-current={currentPage === page ? 'page' : undefined}
-                    >
-                      {page}
-                    </button>
-                  );
-                })}
+                  })}
+                </div>
                 
                 {/* Next Button */}
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-gray-600 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  className="w-12 h-12 rounded-full flex items-center justify-center text-gray-600 hover:text-blue-700 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-300 hover:bg-blue-50 hover:scale-105"
                   aria-label="Next page"
                 >
-                  <FaChevronRight className="text-sm" />
+                  <FaChevronRight className="text-base" />
                 </button>
-                
-                {/* Go to Page Section */}
-                <div className="flex items-center gap-2 ml-4 pl-4 border-l border-gray-200">
-                  <span className="text-sm text-gray-600 whitespace-nowrap">Go to</span>
-                  <input
-                    type="number"
-                    min="1"
-                    max={totalPages}
-                    value={currentPage}
-                    onChange={(e) => {
-                      const page = parseInt(e.target.value);
-                      if (!isNaN(page) && page >= 1 && page <= totalPages) {
-                        handlePageChange(page);
-                      }
-                    }}
-                    className="w-12 h-6 text-center text-sm bg-blue-900 text-white rounded border-0 outline-none"
-                    aria-label="Go to page number"
-                  />
-                  <span className="text-sm text-gray-600 whitespace-nowrap">Page</span>
+                <div className="flex items-center gap-3 ml-8 pl-8 border-l-2 border-gray-200">
+                  <span className="text-base text-gray-700 font-semibold whitespace-nowrap">Go to</span>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      min="1"
+                      max={totalPages}
+                      value={currentPage}
+                      onChange={(e) => {
+                        const page = parseInt(e.target.value);
+                        if (!isNaN(page) && page >= 1 && page <= totalPages) {
+                          handlePageChange(page);
+                        }
+                      }}
+                      className="w-16 h-10 text-center text-base bg-blue-900 text-white rounded-lg border-0 outline-none font-bold shadow-md focus:ring-2 focus:ring-blue-300 transition-all"
+                      aria-label="Go to page number"
+                    />
+                  </div>
+                  <span className="text-base text-gray-700 font-semibold whitespace-nowrap">Page</span>
                 </div>
               </div>
             </div>
           </div>
         )}
-        
-        {/* No Results Message */}
         {filteredNews.length === 0 && (
           <div className="text-center py-12">
             <div className="text-gray-500 text-lg mb-2">No news found</div>
