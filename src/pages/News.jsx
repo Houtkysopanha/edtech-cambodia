@@ -8,28 +8,32 @@ const newsData = [
     title: "Coding Bootcamp",
     date: "July 15, 2024",
     image: "/images/img1-news.png",
-    category: "Education"
+    category: "Education",
+    description: "Join our intensive coding bootcamp to learn the latest programming skills and technologies."
   },
   {
     id: 2,
     title: "Open House",
     date: "August 22, 2024",
-    image: "/images/img2-news.png",  
-    category: "Event"
+    image: "/images/img2-news.png",
+    category: "Event",
+    description: "Join us for an open house event to explore our programs and meet our instructors."
   },
   {
     id: 3,
     title: "Math Competition",
     date: "September 12, 2024",
     image: "/images/img3-news.png",
-    category: "Competition"
+    category: "Competition",
+    description: "Participate in our annual math competition to showcase your skills and win prizes."
   },
   {
     id: 4,
     title: "Workshop on AI",
     date: "March 15, 2024",
     image: "/images/img4-news.png",
-    category: "Workshop"
+    category: "Workshop",
+    description: "Learn about the latest advancements in AI and how they can be applied in education."
   },
   {
     id: 5,
@@ -332,7 +336,7 @@ export default function News() {
                     </h3>
                     {viewMode === 'list' && (
                       <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        {news.description}
                       </p>
                     )}
                   </div>
@@ -405,7 +409,7 @@ export default function News() {
                   <span className="text-base text-gray-700 font-semibold whitespace-nowrap">Go to</span>
                   <div className="relative">
                     <input
-                      type="number"
+                      type="text"
                       min="1"
                       max={totalPages}
                       value={currentPage}
@@ -416,7 +420,7 @@ export default function News() {
                         }
                       }}
                       className="w-16 h-10 text-center text-base bg-blue-900 text-white rounded-lg border-0 outline-none font-bold shadow-md focus:ring-2 focus:ring-blue-300 transition-all"
-                      aria-label="Go to page number"
+                      aria-label="Go to page number" style={{ borderRadius: '0.5rem' }}
                     />
                   </div>
                   <span className="text-base text-gray-700 font-semibold whitespace-nowrap">Page</span>
