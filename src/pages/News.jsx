@@ -111,6 +111,7 @@ export default function News() {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('date');
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageInput, setPageInput] = useState('1'); // Separate state for input field
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
   
   const itemsPerPage = 9; // Always show 9 items per page
@@ -141,11 +142,13 @@ export default function News() {
   // Reset to page 1 when search or sort changes
   React.useEffect(() => {
     setCurrentPage(1);
+    setPageInput('1'); // Also reset input field
   }, [searchTerm, sortBy]);
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
+      setPageInput(page.toString()); // Update input field when page changes
       // Smooth scroll to top when page changes
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -399,17 +402,46 @@ export default function News() {
                   <div className="relative">
                     <input
                       type="text"
-                      min="1"
-                      max={totalPages}
-                      value={currentPage}
+                      value={pageInput}
                       onChange={(e) => {
-                        const page = parseInt(e.target.value);
+                        const value = e.target.value;
+                        setPageInput(value);
+                        
+                        // Try to parse and validate the page number as user types
+                        const page = parseInt(value);
                         if (!isNaN(page) && page >= 1 && page <= totalPages) {
+                          setCurrentPage(page);
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        // Prevent non-numeric input except backspace, delete, arrow keys, Enter
+                        if (!/[0-9]/.test(e.key) && !['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter'].includes(e.key)) {
+                          e.preventDefault();
+                        }
+                        
+                        // Handle Enter key to apply the page change
+                        if (e.key === 'Enter') {
+                          const page = parseInt(pageInput);
+                          if (!isNaN(page) && page >= 1 && page <= totalPages) {
+                            handlePageChange(page);
+                          } else {
+                            setPageInput(currentPage.toString());
+                          }
+                        }
+                      }}
+                      onBlur={() => {
+                        // If input is empty or invalid on blur, reset to current page
+                        const page = parseInt(pageInput);
+                        if (pageInput === '' || isNaN(page) || page < 1 || page > totalPages) {
+                          setPageInput(currentPage.toString());
+                        } else {
                           handlePageChange(page);
                         }
                       }}
-                      className="w-16 h-10 text-center text-base bg-blue-900 text-white rounded-lg border-0 outline-none font-bold shadow-md focus:ring-2 focus:ring-blue-300 transition-all"
-                      aria-label="Go to page number" style={{ borderRadius: '0.5rem' }}
+                      className="w-16 h-10 text-center text-base bg-blue-900 text-white rounded-lg border-0 outline-none font-bold shadow-md focus:ring-2 focus:ring-blue-300 transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      aria-label="Go to page number" 
+                      style={{ borderRadius: '0.5rem' }}
+                      placeholder={currentPage.toString()}
                     />
                   </div>
                   <span className="text-base text-gray-700 font-semibold whitespace-nowrap">Page</span>

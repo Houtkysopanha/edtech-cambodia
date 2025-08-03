@@ -3,6 +3,7 @@ import img2 from "@/assets/images/img2-news.png";
 import img3 from "@/assets/images/img3-news.png";
 import img4 from "@/assets/images/img4-news.png";
 import { motion as Motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function NewsSection() {
   const featuredNews = {
@@ -110,9 +111,9 @@ export default function NewsSection() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="bg-blue-900 w-60 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-lg shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <Link to="/news" className="bg-blue-900 w-60 hover:bg-blue-800 text-white font-bold px-8 py-3 rounded-lg shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
             View All News
-          </button>
+          </Link>
         </Motion.div>
       </div>
     </Motion.section>
