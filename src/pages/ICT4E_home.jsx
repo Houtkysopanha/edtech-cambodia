@@ -1,39 +1,16 @@
 import React from 'react';
 import { Calendar, MapPin, Users, Target, Award, FileText } from 'lucide-react';
 import ICT4E_navbar from '@/components/section/ITC4E_navbar';
-import ICT4EBackground from '@/assets/images/ICT4E.png';
+import ICT4E_HeroSection from '@/components/section/ICT4E_HeroSection';
 import ICT4E_3 from '@/assets/images/ICT4E_3.png';
 import ICT4E_1 from '@/assets/images/ICT4E_1.png';
+import ICT4E_Header from '@/components/section/ICT4E_header';
 const ICT4E_home = () => {
   return (
-    <div className="font-sans text-gray-800 bg-white min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-black text-white py-20">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{
-            backgroundImage: `url(${ICT4EBackground})`
-          }}
-        ></div>
-        <div className="relative z-10 container mx-auto px-4 text-center" style={{marginTop: '100px', marginBottom: '100px'}}>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            ICT for Education Network Meeting <span className="text-yellow-400">(ICT4E)</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed" style={{fontSize: '1rem'}}>
-            1st quarterly meeting of ICT for Education Network Committee ICT4E on Education Network Meeting of Low-skill Youth and 
-            Labor mobility especially on Digital Solutions in Response of School Closure
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <button className="bg-yellow-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400">
-              Register Now
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900">
-              About Us
-            </button>
-          </div>
-        </div>
-      </section>
+    <>
+      <div className="font-sans text-gray-800 bg-white min-h-screen">
+        {/* Hero Section */}
+        <ICT4E_HeroSection />
 
       {/* Navigation Tabs */}
       <ICT4E_navbar activeTab="about-ict4e" />
@@ -61,41 +38,55 @@ const ICT4E_home = () => {
           </div>
         </section>
 
-        {/* Three Column Section */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {/* Background */}
-          <div className="bg-blue-900 text-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">Background</h3>
-            <p className="text-blue-100 mb-6 leading-relaxed">
-              MoEYS and ICT4E network promise a learning in despite school continues closure during COVID-19. It discovered its intended challenge...
-            </p>
-            <button className="border border-blue-300 text-blue-300 px-4 py-2 rounded hover:bg-blue-800">
-              Read more
-            </button>
-          </div>
+      </main>
 
-          {/* Goal */}
-          <div className="bg-blue-900 text-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">Goal</h3>
-            <p className="text-blue-100 mb-6 leading-relaxed">
-              The ICT4E Network Meeting focuses on updating the status of ICT interventions in education during COVID-19 and maintaining network connectivity and information sharing in challenging times.
-            </p>
-            <button className="border border-blue-300 text-blue-300 px-4 py-2 rounded hover:bg-blue-800">
-              Read more
-            </button>
-          </div>
+      {/* Three Column Section - Full Width */}
+      <section className="w-full mb-16" style={{backgroundColor: '#02114C'}}>
+        <div className="w-full px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-full">
+            {/* Background */}
+            <div className="text-white p-8 rounded-lg flex flex-col h-full">
+              <h3 className="text-xl font-bold mb-4" style={{color: 'yellow'}}>Background</h3>
+              <p className="text-blue-100 mb-6 leading-relaxed flex-grow">
+                MoEYS and ICT4E network promote e-learning to ensure education continues during COVID-19, discussed in a blended meeting on August 24, 2020.
+              </p>
+              <div className="mt-auto">
+                <button className="border border-blue-300 text-blue-300 px-4 py-2 rounded hover:bg-blue-800">
+                  Read more
+                </button>
+              </div>
+            </div>
 
-          {/* Expected Outcome */}
-          <div className="bg-blue-900 text-white p-8 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">Expected Outcome</h3>
-            <p className="text-blue-100 mb-6 leading-relaxed">
-              The ICT4E Network Meeting aims to promote practical collaboration, share MoEYS digital education updates, and promote collaborative to develop continuous learning during COVID-19.
-            </p>
-            <button className="border border-blue-300 text-blue-300 px-4 py-2 rounded hover:bg-blue-800">
-              Read more
-            </button>
+            {/* Goal */}
+            <div className="text-white p-8 rounded-lg flex flex-col h-full">
+              <h3 className="text-xl font-bold mb-4" style={{color: 'yellow'}}>Goal</h3>
+              <p className="text-blue-100 mb-6 leading-relaxed flex-grow">
+                The ICT4E Network Meeting focuses on updating the status of ICT interventions in education during COVID-19 and maintaining network connectivity and information sharing in challenging times.
+              </p>
+              <div className="mt-auto">
+                <button className="border border-blue-300 text-blue-300 px-4 py-2 rounded hover:bg-blue-800">
+                  Read more
+                </button>
+              </div>
+            </div>
+
+            {/* Expected Outcome */}
+            <div className="text-white p-8 rounded-lg flex flex-col h-full">
+              <h3 className="text-xl font-bold mb-4" style={{color: 'yellow'}}>Expected Outcome</h3>
+              <p className="text-blue-100 mb-6 leading-relaxed flex-grow">
+                The ICT4E Network Meeting aims to enhance stakeholder collaboration, share MoEYS's digital education updates, and promote contributions to ensure continuous learning during COVID-19.
+              </p>
+              <div className="mt-auto">
+                <button className="border border-blue-300 text-blue-300 px-4 py-2 rounded hover:bg-blue-800">
+                  Read more
+                </button>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
+
+      <main className="container mx-auto px-4 py-12">
 
         {/* Call for Participation */}
         <section className="mb-16">
@@ -159,6 +150,7 @@ const ICT4E_home = () => {
       </main>
       
     </div>
+    </>
   );
 };
 

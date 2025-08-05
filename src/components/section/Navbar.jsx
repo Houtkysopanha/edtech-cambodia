@@ -83,7 +83,7 @@ export default function Navbar() {
                     <div className="py-2">
                       {/* ICT4E */}
                       <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer text-left">
-                        <Link to="/ICT4E_home" className="text-gray-800 hover:text-blue-600 block text-left">
+                        <Link to="/ict4e" className="text-gray-800 hover:text-blue-600 block text-left">
                           ICT4E
                         </Link>
                       </div>

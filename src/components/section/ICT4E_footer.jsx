@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Globe, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin} from 'lucide-react';
+import { FaFacebook, FaYoutube, FaTelegramPlane, FaTiktok } from 'react-icons/fa';
 import MOEYSLogo from '@/assets/images/MOEYS.png';
 
 const ICT4E_footer = () => {
@@ -71,21 +72,17 @@ const ICT4E_footer = () => {
           <div className="flex items-center space-x-4" style={{marginBottom: '2rem'}}>
             <span className="text-white font-semibold">Follow Us:</span>
             <div className="flex space-x-10">
-              <a href="#" className="text-white hover:text-gray-300 transition-colors">
-                <Facebook className="w-5 h-5" />
+              <a href="#" className="text-white hover:text-blue-400 transition-colors">
+                <FaFacebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white hover:text-gray-300 transition-colors">
-                <Youtube className="w-5 h-5" />
+              <a href="#" className="text-white hover:text-red-400 transition-colors">
+                <FaYoutube className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white hover:text-gray-300 transition-colors">
-                <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">T</span>
-                </div>
+              <a href="#" className="text-white hover:text-blue-300 transition-colors">
+                <FaTelegramPlane className="w-5 h-5" />
               </a>
-              <a href="#" className="text-white hover:text-gray-300 transition-colors">
-                <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center border border-white">
-                  <span className="text-white text-xs font-bold">TT</span>
-                </div>
+              <a href="#" className="text-white hover:text-pink-400 transition-colors">
+                <FaTiktok className="w-5 h-5" />
               </a>
             </div>
           </div>
