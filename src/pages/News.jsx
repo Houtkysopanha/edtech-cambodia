@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { FaSearch, FaCalendarAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import theme from "@/assets/images/themes.png"
+import img1News from "@/assets/images/img1-news.png"
+import img2News from "@/assets/images/img2-news.png"
+import img3News from "@/assets/images/img3-news.png"
+import img4News from "@/assets/images/img4-news.png"
 // Sample news data - you can replace this with actual data from an API
 const newsData = [
   {
     id: 1,
     title: "Coding Bootcamp",
     date: "July 15, 2024",
-    image: "/images/img1-news.png",
+    image: img1News,
     category: "Education",
     description: "Join our intensive coding bootcamp to learn the latest programming skills and technologies."
   },
@@ -15,7 +19,7 @@ const newsData = [
     id: 2,
     title: "Open House",
     date: "August 22, 2024",
-    image: "/images/img2-news.png",
+    image: img2News,
     category: "Event",
     description: "Join us for an open house event to explore our programs and meet our instructors."
   },
@@ -23,7 +27,7 @@ const newsData = [
     id: 3,
     title: "Math Competition",
     date: "September 12, 2024",
-    image: "/images/img3-news.png",
+    image: img3News,
     category: "Competition",
     description: "Participate in our annual math competition to showcase your skills and win prizes."
   },
@@ -31,7 +35,7 @@ const newsData = [
     id: 4,
     title: "Workshop on AI",
     date: "March 15, 2024",
-    image: "/images/img4-news.png",
+    image: img4News,
     category: "Workshop",
     description: "Learn about the latest advancements in AI and how they can be applied in education."
   },
@@ -39,70 +43,70 @@ const newsData = [
     id: 5,
     title: "Annual Science Fair",
     date: "April 10, 2024",
-    image: "/images/img1-news.png",
+    image: img1News,
     category: "Event"
   },
   {
     id: 6,
     title: "Literature Festival",
     date: "October 5, 2024",
-    image: "/images/img2-news.png",
+    image: img2News,
     category: "Festival"
   },
   {
     id: 7,
     title: "Workshop on AI",
     date: "March 15, 2024",
-    image: "/images/img3-news.png",
+    image: img3News,
     category: "Workshop"
   },
   {
     id: 8,
     title: "Annual Science Fair",
     date: "April 10, 2024",
-    image: "/images/img4-news.png",
+    image: img4News,
     category: "Event"
   },
   {
     id: 9,
     title: "Robot Lecture Series",
     date: "June 20, 2024",
-    image: "/images/img1-news.png",
+    image: img1News,
     category: "Lecture"
   },
   {
     id: 10,
     title: "Annual Science Fair",
     date: "April 10, 2024",
-    image: "/images/img1-news.png",
+    image: img1News,
     category: "Event"
   },
   {
     id: 11,
     title: "Literature Festival",
     date: "October 5, 2024",
-    image: "/images/img2-news.png",
+    image: img2News,
     category: "Festival"
   },
   {
     id: 12,
     title: "Workshop on AI",
     date: "March 15, 2024",
-    image: "/images/img3-news.png",
+    image: img3News,
     category: "Workshop"
   },
   {
     id: 13,
     title: "Annual Science Fair",
     date: "April 10, 2024",
-    image: "/images/img4-news.png",
+    image: img4News,
     category: "Event"
   },
   {
     id: 14,
     title: "Robot Lecture Series",
     date: "June 20, 2024",
-    image: "/images/img1-news.png",
+    image: img1News,
     category: "Lecture"
   }
 ];
