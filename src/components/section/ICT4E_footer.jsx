@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin} from 'lucide-react';
 import { FaFacebook, FaYoutube, FaTelegramPlane, FaTiktok } from 'react-icons/fa';
 import MOEYSLogo from '@/assets/images/MOEYS.png';
@@ -42,11 +43,11 @@ const ICT4E_footer = () => {
           <div className="text-left ml-8">
             <h4 className="font-semibold mb-6 text-lg" style={{ color: '#FFD700' }}>Quick Links</h4>
             <div className="space-y-3 text-gray-300 text-sm">
-              <a href="#" className="block hover:text-white transition-colors">About Event</a>
-              <a href="#" className="block hover:text-white transition-colors">Agenda</a>
-              <a href="#" className="block hover:text-white transition-colors">Contact</a>
-              <a href="#" className="block hover:text-white transition-colors">Register</a>
-              <a href="#" className="block hover:text-white transition-colors">Partner</a>
+              <Link to="/ict4e/about-meeting" className="block hover:text-white transition-colors" onClick={() => window.scrollTo(0, 500)}>About Event</Link>
+              <Link to="/ict4e/agenda" className="block hover:text-white transition-colors" onClick={() => window.scrollTo(0, 800)}>Agenda</Link>
+              <Link to="/ict4e/contact" className="block hover:text-white transition-colors" onClick={() => window.scrollTo(0, 800)}>Contact</Link>
+              <Link to="/register" className="block hover:text-white transition-colors" onClick={() => window.scrollTo(0, 200)}>Register</Link>
+              <Link to="/ict4e/registration-list" className="block hover:text-white transition-colors" onClick={() => window.scrollTo(0, 800)}>Partner</Link>
             </div>
           </div>
           
