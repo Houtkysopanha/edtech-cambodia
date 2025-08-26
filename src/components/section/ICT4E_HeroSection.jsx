@@ -12,15 +12,18 @@ const ICT4E_HeroSection = ({
   onSecondaryClick
 }) => {
   return (
-    <section className="relative bg-black text-white py-20">
-      <div className="absolute inset-0 bg-black/30"></div>
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30"
-        style={{
-          backgroundImage: `url(${ICT4EBackground})`
-        }}
-      ></div>
-      <div className="relative z-10 container mx-auto px-4 text-center" style={{marginTop: '100px', marginBottom: '100px'}}>
+    <section
+      className="relative bg-cover bg-center bg-no-repeat text-white min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: `url(${ICT4EBackground})`,
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Background Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 text-center max-w-6xl">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           {title} <span className="text-yellow-400">{subtitle}</span>
         </h1>
