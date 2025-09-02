@@ -3,7 +3,6 @@ import { FaFacebookF, FaYoutube, FaTiktok, FaChevronDown, FaChevronRight } from 
 import logo from '@/assets/images/edtech_logo.png'; 
 import { Button } from "@/components/ui/button"
 import { useState, useRef, useEffect } from 'react';
-
 export default function Navbar() {
   const [isOurWorkDropdownOpen, setIsOurWorkDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -100,7 +99,7 @@ export default function Navbar() {
                         {/* Submenu */}
                         <div className="absolute left-full top-0 ml-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 text-left" style={{ borderRadius: '0.5rem' }}>
                           <div className="py-2">
-                            <Link to="/our-work/edtech-summit/s2025" className="block px-4 py-2 text-gray-800 hover:bg-gray-50 hover:text-blue-600 text-left">
+                            <Link to="/edtech-s2025" className="block px-4 py-2 text-gray-800 hover:bg-gray-50 hover:text-blue-600 text-left">
                               EdTech S2025
                             </Link>
                             <Link to="/our-work/edtech-summit/s2026" className="block px-4 py-2 text-gray-800 hover:bg-gray-50 hover:text-blue-600 text-left">
