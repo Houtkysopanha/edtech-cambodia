@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from '../layouts/DefaultLayout';
 import ICT4E_Layout from '../layouts/ICT4E_Layout';
+import EdTech2025Layout from '../layouts/EdTech2025_Layout';
 import Home from '../pages/Home';
 import AboutUs from '../pages/Aboutus';
 import React from 'react';
@@ -13,6 +14,7 @@ import ICT4E_about from "@/pages/ICT4E_about";
 import ICT4E_agenda from "@/pages/ICT4E_agenda";
 import ICT4E_contact from "@/pages/ICT4E_contact";
 import ICT4E_partner from "@/pages/ICT4E_partner";
+import Edtech2025Home from "@/pages/edtech-2025-home";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -25,6 +27,16 @@ export default function AppRoutes() {
           <Route path="/contact" element={<ContactPage/>}/>
           <Route path="/member" element={<Member/>}/>
           <Route path="/register" element={<Register/>}/>
+        </Route>
+
+        {/* EdTech S2025 Dedicated Routes - Separate layout */}
+        <Route element={<EdTech2025Layout />}>
+          <Route path="/edtech-s2025" element={<Edtech2025Home/>}/>
+          <Route path="/edtech-s2025/about" element={<div>EdTech S2025 About Page</div>}/>
+          <Route path="/edtech-s2025/agenda" element={<div>EdTech S2025 Agenda Page</div>}/>
+          <Route path="/edtech-s2025/sponsors" element={<div>EdTech S2025 Sponsors Page</div>}/>
+          <Route path="/edtech-s2025/awards" element={<div>EdTech S2025 Awards Page</div>}/>
+          <Route path="/edtech-s2025/contact" element={<div>EdTech S2025 Contact Page</div>}/>
         </Route>
 
         {/* ICT4E Dedicated Routes - No EdTech navbar/footer */}
