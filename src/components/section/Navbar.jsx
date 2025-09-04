@@ -17,9 +17,9 @@ const ourWorkData = {
       submenu: [
         { 
           title: 'EdTech Summit 2025', 
-          link: '/edtech-summit/2025', 
+          link: '/summit2025', 
           image: '/src/assets/images/edtech_logo.png',
-          description: 'Annual technology in education conference focusing on digital transformation in learning environments and modern teaching methodologies.'
+          description: 'Transforming Education Through Innovation - Join us for the most comprehensive educational technology summit in Cambodia, featuring cutting-edge solutions, inspiring speakers, and networking opportunities for the future of learning.'
         },
         { 
           title: 'EdTech Summit 2026', 
@@ -279,13 +279,13 @@ export default function Navbar() {
   // Dynamic events data - you can easily update these
   const upcomingEvents = [
     {
-      title: "ICT for Education: Network and Meeting",
-      date: "January 21-22 2025",
+      title: "EdTech Summit 2025",
+      date: "March 15-17, 2025",
       isActive: true
     },
     {
-      title: "EdTech Summit 2026",
-      date: "February 17-18 2026",
+      title: "ICT for Education: Network and Meeting",
+      date: "January 21-22 2025",
       isActive: true
     },
     {
