@@ -90,9 +90,7 @@ export default function Navbar() {
                       {/* EdTech Summit with submenu */}
                       <div className="group relative">
                         <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer flex items-center justify-between text-left">
-                          <Link to="/our-work/edtech-summit" className="text-gray-800 hover:text-blue-600 text-left">
-                            EdTech Summit
-                          </Link>
+                          <p>EdTech Summit</p>
                           <FaChevronRight className="text-xs text-gray-400" />
                         </div>
                         

@@ -6,6 +6,13 @@ const FloatingBackToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
+      // Hide button if there's a modal open (check for modal backdrop)
+      const modalBackdrop = document.querySelector('.modal-backdrop');
+      if (modalBackdrop) {
+        setIsVisible(false);
+        return;
+      }
+
       // Show button when user has scrolled down 30% of the page
       const scrolled = document.documentElement.scrollTop;
       const maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -26,10 +33,15 @@ const FloatingBackToTop = () => {
       });
     };
 
+    // Check for modal changes
+    const observer = new MutationObserver(toggleVisibility);
+    observer.observe(document.body, { childList: true, subtree: true });
+
     window.addEventListener('scroll', smoothScroll, { passive: true });
     
     return () => {
       window.removeEventListener('scroll', smoothScroll);
+      observer.disconnect();
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);

@@ -71,18 +71,22 @@ const EdTech2025HeroSection = () => {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <button className="relative bg-blue-600 hover:bg-red-600 text-white px-12 py-5 rounded-lg text-xl font-semibold transition-all duration-300 shadow-lg group overflow-hidden w-[280px] h-[64px] flex items-center justify-center">
-              <span className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
+              {/* English Text (slides out to top) */}
+              <span className="absolute inset-0 flex items-center justify-center group-hover:-translate-y-full transition-transform duration-500 ease-in-out">
                 GET E-CERTIFICATE
               </span>
-              <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {/* Khmer Text (slides in from bottom) */}
+              <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-in-out">
                 ទទួលវិញ្ញាបនបត្រអេឡិចត្រូនិក
               </span>
             </button>
             <button className="relative bg-blue-500 hover:bg-red-600 text-white px-12 py-5 rounded-lg text-xl font-semibold transition-all duration-300 shadow-lg group overflow-hidden w-[280px] h-[64px] flex items-center justify-center">
-              <span className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
+              {/* English Text (slides out to top) */}
+              <span className="absolute inset-0 flex items-center justify-center group-hover:-translate-y-full transition-transform duration-500 ease-in-out">
                 PARTNER NOW
               </span>
-              <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {/* Khmer Text (slides in from bottom) */}
+              <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-in-out">
                 ចូលរួមជាដៃគូឥឡូវនេះ
               </span>
             </button>
