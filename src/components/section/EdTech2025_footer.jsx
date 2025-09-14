@@ -24,16 +24,16 @@ const EdTech2025Footer = () => {
             {/* Social Media */}
             <div className="flex items-center space-x-4">
               <span className="text-sm">Follow us:</span>
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              <a href="https://www.facebook.com/edtechcambodia.org" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
                 <FaFacebookF className="w-4 h-4" />
               </a>
-              <a href="#" className="hover:text-red-400 transition-colors">
+              <a href="https://www.youtube.com/@edtechcambodia" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">
                 <FaYoutube className="w-4 h-4" />
               </a>
-              <a href="#" className="hover:text-blue-300 transition-colors">
+              <a href="https://www.tiktok.com/@edtechcambodia" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 transition-colors">
                 <FaTiktok className="w-4 h-4" />
               </a>
-              <a href="#" className="hover:text-pink-400 transition-colors">
+              <a href="https://t.me/edtechcambodia" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 transition-colors">
                 <FaTelegramPlane className="w-4 h-4" />
               </a>
             </div>

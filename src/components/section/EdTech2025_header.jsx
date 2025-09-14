@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaFacebookF, FaYoutube, FaTiktok,FaTelegramPlane } from 'react-icons/fa';
 import edtechLogoWhite from '@/assets/images/edtect_logo_white.png';
 import edtechLogoDark from '@/assets/images/edtech_logo.png';
 
 const EdTech2025Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+
+  // Function to check if a navigation link is active
+  const isActiveLink = (path) => {
+    return location.pathname === path;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,16 +40,16 @@ const EdTech2025Header = () => {
       <div className={`relative z-10 flex justify-end items-center px-8 transition-all duration-100 ${isScrolled ? 'hidden' : 'py-3'}`}>
         <div className="flex items-center space-x-4">
           <span className="text-sm">Follow us:</span>
-          <a href="#" className="text-white hover:text-blue-400 transition-colors duration-100">
+          <a href="https://www.facebook.com/edtechcambodia.org" className="text-white hover:text-blue-400 transition-colors duration-100">
             <FaFacebookF className="w-4 h-4" />
           </a>
-          <a href="#" className="text-white hover:text-red-400 transition-colors duration-100">
+          <a href="https://www.youtube.com/@edtechcambodia" className="text-white hover:text-red-400 transition-colors duration-100">
             <FaYoutube className="w-4 h-4" />
           </a>
-          <a href="#" className="text-white hover:text-blue-300 transition-colors duration-100">
+          <a href="https://t.me/edtechcambodia" className="text-white hover:text-blue-300 transition-colors duration-100">
             <FaTelegramPlane className="w-4 h-4" />
           </a>
-          <a href="#" className="text-white hover:text-pink-400 transition-colors duration-100">
+          <a href="https://www.tiktok.com/@edtechcambodia" className="text-white hover:text-pink-400 transition-colors duration-100">
             <FaTiktok className="w-4 h-4" />
           </a>
         </div>
@@ -65,23 +71,53 @@ const EdTech2025Header = () => {
 
         {/* Navigation Menu */}
         <div className={`hidden lg:flex items-center justify-center space-x-12 transition-colors duration-100 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
-          <Link to="/edtech-s2025/about" className={`transition-colors duration-100 text-center flex flex-col items-center ${isScrolled ? 'hover:text-blue-600' : 'hover:text-yellow-400'}`}>
+          <Link to="/edtech-s2025/about" className={`transition-colors duration-100 text-center flex flex-col items-center ${
+            isActiveLink('/edtech-s2025/about') 
+              ? 'text-red-600' 
+              : isScrolled 
+                ? 'hover:text-blue-600' 
+                : 'hover:text-yellow-400'
+          }`}>
             <div className="text-sm font-medium">អំពីកម្មវិធី</div>
             <div className="text-sm">About</div>
           </Link>
-          <Link to="/edtech-s2025/agenda" className={`transition-colors duration-100 text-center flex flex-col items-center ${isScrolled ? 'hover:text-blue-600' : 'hover:text-yellow-400'}`}>
+          <Link to="/edtech-s2025/agenda" className={`transition-colors duration-100 text-center flex flex-col items-center ${
+            isActiveLink('/edtech-s2025/agenda') 
+              ? 'text-red-600' 
+              : isScrolled 
+                ? 'hover:text-blue-600' 
+                : 'hover:text-yellow-400'
+          }`}>
             <div className="text-sm font-medium">របៀបវារៈ</div>
             <div className="text-sm">Agenda</div>
           </Link>
-          <Link to="/edtech-s2025/sponsors" className={`transition-colors duration-100 text-center flex flex-col items-center ${isScrolled ? 'hover:text-blue-600' : 'hover:text-yellow-400'}`}>
+          <Link to="/edtech-s2025/sponsors" className={`transition-colors duration-100 text-center flex flex-col items-center ${
+            isActiveLink('/edtech-s2025/sponsors') 
+              ? 'text-red-600' 
+              : isScrolled 
+                ? 'hover:text-blue-600' 
+                : 'hover:text-yellow-400'
+          }`}>
             <div className="text-sm font-medium">អ្នកឧបត្ថម្ភ និងពិព័រណ៍</div>
             <div className="text-sm">Sponsors & Exhibitors</div>
           </Link>
-          <Link to="/edtech-s2025/awards" className={`transition-colors duration-100 text-center flex flex-col items-center ${isScrolled ? 'hover:text-blue-600' : 'hover:text-yellow-400'}`}>
+          <Link to="/edtech-s2025/awards" className={`transition-colors duration-100 text-center flex flex-col items-center ${
+            isActiveLink('/edtech-s2025/awards') 
+              ? 'text-red-600' 
+              : isScrolled 
+                ? 'hover:text-blue-600' 
+                : 'hover:text-yellow-400'
+          }`}>
             <div className="text-sm font-medium">ពានរង្វាន់</div>
             <div className="text-sm">Awards</div>
           </Link>
-          <Link to="/edtech-s2025/contact" className={`transition-colors duration-100 text-center flex flex-col items-center ${isScrolled ? 'hover:text-blue-600' : 'hover:text-yellow-400'}`}>
+          <Link to="/edtech-s2025/contact" className={`transition-colors duration-100 text-center flex flex-col items-center ${
+            isActiveLink('/edtech-s2025/contact') 
+              ? 'text-red-600' 
+              : isScrolled 
+                ? 'hover:text-blue-600' 
+                : 'hover:text-yellow-400'
+          }`}>
             <div className="text-sm font-medium">ទំនាក់ទំនង</div>
             <div className="text-sm">Contact</div>
           </Link>
