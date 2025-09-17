@@ -15,8 +15,8 @@ import ICT4E_contact from "@/pages/ICT4E_contact";
 import ICT4E_partner from "@/pages/ICT4E_partner";
 import Summit2025_home from "@/pages/Summit2025_home";
 import Summit2025_about from "@/pages/Summit2025_about";
+import Summit2025_award from "@/pages/Summit2025_award";
 import Summit2025_agenda from "@/pages/Summit2025_agenda";
-import Summit2025_speakers from "@/pages/Summit2025_speakers";
 import Summit2025_contact from "@/pages/Summit2025_contact";
 import Summit2025_partners from "@/pages/Summit2025_partners";
 export default function AppRoutes() {
@@ -47,7 +47,7 @@ export default function AppRoutes() {
           <Route path="/summit2025" element={<Summit2025_home/>}/>
           <Route path="/summit2025/about-summit" element={<Summit2025_about/>}/>
           <Route path="/summit2025/agenda" element={<Summit2025_agenda/>}/>
-          <Route path="/summit2025/speakers" element={<Summit2025_speakers/>}/>
+          <Route path="/summit2025/award" element={<Summit2025_award/>} />
           <Route path="/summit2025/contact" element={<Summit2025_contact/>}/>
           <Route path="/summit2025/partners" element={<Summit2025_partners/>}/>
         </Route>

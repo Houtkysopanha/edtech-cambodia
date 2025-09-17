@@ -1,153 +1,111 @@
-import React from 'react';
-import { motion as MOTION } from 'framer-motion';
-import Summit2025_navbar from '@/components/section/Summit2025_navbar';
-import Summit2025_HeroSection from '@/components/section/Summit2025_HeroSection';
+import React from "react";
+import { motion as MOTION } from "framer-motion";
+import Summit2025_navbar from "@/components/section/Summit2025_navbar";
+import Summit2025_HeroSection from "@/components/section/Summit2025_HeroSection";
 // Import images
-import edtechLogo from '@/assets/images/edtech_logo.png';
-import showcaseImage from '@/assets/images/showcase.png';
-import keynoteImage from '@/assets/images/keynote.png';
-import panelImage from '@/assets/images/panel-discuss.png';
+import showcaseImage from "@/assets/images/showcase.png";
+import keynoteImage from "@/assets/images/keynote.png";
+import panelImage from "@/assets/images/panel-discuss.png";
+import logo from "@/assets/images/logo-edtech.png";
+import banner from "@/assets/images/bannerAbout.png"
 
 const Summit2025_about = () => {
-  const featurePrograms = [
-    {
-      title: 'Keynote',
-      description: 'Key insights and updates from national and international experts on the current and future vision of EdTech.',
-      image: keynoteImage
-    },
-    {
-      title: 'Panel Discussion', 
-      description: 'Navigating the EdTech ecosystem for equitable, sustainable and safe education, innovation, and skills development in Cambodia.',
-      image: panelImage
-    },
-    {
-      title: 'EdTech Showcase',
-      description: 'Exhibition of EdTech initiatives from both public and private sectors and opportunity for collaborations.',
-      image: showcaseImage
-    },
-    {
-      title: 'Competition',
-      description: 'Most innovative EdTech Teacher and Public Digital, Media and Information Literacy Challenge.',
-      image: edtechLogo
-    }
-  ];
 
   return (
     <>
       <div className="font-sans text-gray-800 bg-white min-h-screen">
-        {/* Hero Section - Dark Blue Background */}
-        <section className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white py-20">
-          <div className="container mx-auto px-4 text-center">
-            <MOTION.h1 
-              className="text-5xl font-bold mb-4"
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              អំពីយើង
-            </MOTION.h1>
-            <MOTION.h2 
-              className="text-3xl font-light mb-8"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              About Us
-            </MOTION.h2>
-            {/* Decorative Tech Icons */}
-            <div className="flex justify-center items-center space-x-8 mt-12 opacity-70">
-              <div className="w-12 h-12 border-2 border-white rounded-lg flex items-center justify-center">
-                <span className="text-xl">🌐</span>
-              </div>
-              <div className="w-12 h-12 border-2 border-white rounded-lg flex items-center justify-center">
-                <span className="text-xl">👥</span>
-              </div>
-              <div className="w-12 h-12 border-2 border-white rounded-lg flex items-center justify-center">
-                <span className="text-xl">🔬</span>
-              </div>
-              <div className="w-12 h-12 border-2 border-white rounded-lg flex items-center justify-center">
-                <span className="text-xl">💡</span>
-              </div>
-              <div className="w-12 h-12 border-2 border-white rounded-lg flex items-center justify-center">
-                <span className="text-xl">🎯</span>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Hero Section */}
+        <Summit2025_HeroSection
+          title="Summit Agenda"
+          subtitle="2025"
+          description="Explore our comprehensive program featuring keynotes, workshops, panels, and networking opportunities"
+        />
 
         {/* Navigation Tabs */}
         <Summit2025_navbar />
 
         {/* Main Content */}
         <main className="container mx-auto px-4 py-12">
-          
-          {/* Summit Introduction Section */}
-          <section className="mb-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Logo and Title */}
-              <MOTION.div 
-                className="text-center lg:text-left"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <div className="flex justify-center lg:justify-start mb-6">
-                  <img src={edtechLogo} alt="EdTech Cambodia Summit" className="h-32" />
-                </div>
-                <h3 className="text-3xl font-bold text-blue-900 mb-4">
-                  សន្និសីទ និងកំណត់គោលការណ៍បច្ចេកវិទ្យាអប់រំកម្ពុជា លើកទីមួយ
-                </h3>
-                <h4 className="text-xl text-blue-700 mb-6">
-                  The First Cambodia EdTech Summit
-                </h4>
-                <p className="text-lg text-gray-700 mb-4">
-                  <strong>Why is The First Cambodia EdTech Summit initiated?</strong>
-                </p>
-              </MOTION.div>
-
-              {/* Right Column - Content */}
-              <MOTION.div 
-                className="space-y-6"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    The Cambodia EdTech Summit is a premier platform that annually convenes government representatives, educators, IT professionals, entrepreneurs, investors, policymakers, and stakeholders to foster knowledge sharing, innovation, and collaboration toward challenges and open opportunities in integrating technology into Cambodia's education system.
-                  </p>
-                  
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    Our commitment with a theme <strong>"Pathways to Cambodia's Digital Education"</strong> will connect all the stakeholders by organizing various activities for the period of <strong>17-18, Feb. 2025</strong>. The future of education in Cambodia lies not only in traditional EdTech innovation but also those technology, but equally important.
-                  </p>
-
-                  <p className="text-gray-700 leading-relaxed">
-                    In Cambodia the primary objectives of equitable, sustainable and safe education discussions, exhibitions, and networking opportunities; the summit serves as a platform for sharing lessons learned and promising practices, and collaboration among public institutions, government agencies, international organizations, civil society, and development partners to shape the future of education in Cambodia.
-                  </p>
-                </div>
-              </MOTION.div>
+          {/* Logo and Title Section */}
+          <div className="flex flex-col md:flex-row items-center justify-center  md:space-y-0 md:space-x-4">
+            <div className="flex-shrink-0">
+              <img
+                src={logo}
+                alt="EdTech Cambodia Logo"
+                className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain"
+              />
             </div>
-          </section>
+            <div className="text-center md:text-left space-y-4">
+              {/* Khmer Title */}
+              <div className="text-1">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium leading-tight khmer-text">
+                  សន្និសីទ និងពិព័រណ៌បច្ចេកវិទ្យាអប់រំកម្ពុជា លើកទី១
+                </h2>
+                {/* English Title */}
+                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+                  The First Cambodia EdTech Summit
+                </h1>
+              </div>
+            </div>
+          </div>
+          <p className="text-xl text-center mt-4 text-gray-800 mb-4">
+            <strong>Why is The First Cambodia EdTech Summit initiated?</strong>
+          </p>
 
           {/* Detailed Content Section */}
           <section className="mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Left Column - English Content */}
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-blue-900 mb-4">Summit Objectives</h3>
-                <div className="space-y-4 text-gray-700 leading-relaxed">
+                <div className="space-y-4 text-gray-700 leading-relaxed text-justify">
                   <p>
-                    As the world becomes increasingly digital, the education sector must adapt to meet the needs of the 21st century. <strong>The Cambodia EdTech Summit</strong> serves as a platform to address digital challenges and opportunities facing Cambodia's education system.
+                    The Cambodia EdTech Summit is a premier platform that
+                    annually convenes a diverse community of policymakers,
+                    educators, IT experts , EdTech innovators, industry leaders,
+                    and other stakeholders to foster knowledge sharing,
+                    innovation, and collaboration to address challenges and
+                    seize opportunities in integrating technology into
+                    Cambodia’s education system.
                   </p>
-                  
+
                   <p>
-                    The summit will bring together diverse experts from government, administration, schools, and universities. The event will gather policymakers, educators, school directors, IT managers, <strong>EdTech innovators, and private companies</strong>, making it the most comprehensive forum to discuss and capitalize on the role of digital technology.
+                    The First Cambodia EdTech Summit, themed “Pathways to
+                    Cambodia’s Digital Education” , will convene at the
+                    Institute of Technology of Cambodia on February 17-18, 2025
+                    . The theme of this year’s summit revolves around
+                    discussions on navigating the EdTech ecosystem for
+                    equitable, sustainable, and safe education, innovation, and
+                    skills development in Cambodia. Through insightful
+                    discussions, exhibitions, and networking opportunities, the
+                    summit aims to drive continuous innovation, promote
+                    collaboration, and accelerate the adoption of
+                    technology-enhanced learning solutions to shape the future
+                    of education in Cambodia.
+                  </p>
+                  <p>
+                    The Cambodia EdTech Summit is the country’s first and
+                    largest platform for convening discussions and collaboration
+                    to transform education through technology. Led by the
+                    Ministry of Education, Youth, and Sport under the
+                    coordination of the Department of Policy (DoPo) and
+                    organizing committees, this landmark event aims to bring
+                    together key stakeholders to pave the future of education in
+                    Cambodia.
+                  </p>
+                  <p>
+                    As the world becomes increasingly digital, the education
+                    sector must adapt to meet the needs of the 21st century. The
+                    Cambodia EdTech Summit serves as a platform to address the
+                    challenges and opportunities of integrating technology into
+                    Cambodia’s education, administration, schools, and
+                    universities. The event will gather policymakers, educators,
+                    school directors, IT managers, EdTech innovators , and
+                    private companies, making it the most comprehensive forum to
+                    discuss and capitalize on the roles of digital technology.
                   </p>
                 </div>
 
-                {/* Document Images */}
-                <div className="grid grid-cols-2 gap-4 mt-8">
-                  <div className="bg-white border-2 border-gray-200 rounded-lg p-4 text-center shadow-sm">
+                <div className="bg-white border-2 border-gray-200 rounded-lg p-4 text-center shadow-sm">
                     <div className="bg-gray-100 h-32 rounded flex items-center justify-center mb-3">
                       <span className="text-4xl">📄</span>
                     </div>
@@ -155,7 +113,65 @@ const Summit2025_about = () => {
                       CONCEPT NOTE
                     </button>
                   </div>
-                  <div className="bg-white border-2 border-gray-200 rounded-lg p-4 text-center shadow-sm">
+              </div>
+
+              {/* Right Column - Khmer Content */}
+              <div className="space-y-6">
+                <div className="space-y-4 text-gray-700 leading-relaxed text-justify">
+                  <p>
+                   សន្និសីទ និងពិព័រណ៍បច្ចេកវិទ្យាអប់រំ (EdTech Summit) គឺជាវេទិកាឈានមុខគេមួយដែល
+រៀបចំំឡើងជារៀងរាល់ឆ្នាំនៅតាមបណ្ដាប្រទេសជឿនលឿននៅលើសកលលោក ដើម្បីប្រជុំជា
+មួយសហគមន៍ដែលមកពីស្ថាប័នចម្រុះរួមមាន អ្នកបង្កើតគោលនយោបាយ អ្នកឯកទេសអប់រំ
+អ្នកឯកទេសព័ត៌មានវិទ្យា អ្នកច្នៃប្រឌិតបច្ចេកវិទ្យាអប់រំ អ្នកដឹកនាំផ្នែកឧស្សាហកម្ម និង
+អ្នកពាក់
+ព័ទ្ធផ្សេងទៀតី
+ដើម្បជំរុញការចែករំលែកចំណេះដឹង ការច្នៃប្រឌិត និងការសហការគ្នាដើម្បីដោះ
+ស្រាយបញ្ហាប្រឈម នឹងចាប់យកឱកាសក្នុងការរួមបញ្ចូលបច្ចេកវិទ្យាទៅក្នុង ប្រព័ន្ឋអប់រំដើម្បីលើក
+កម្ពស់ និងធ្វើទំនើបកម្មអប់រំតាមរយៈបច្ចេកវិទ្យា។
+                  </p>
+
+                  <p>
+                    សន្និសីទ និងពិព័រណ៍បច្ចេកវិទ្យាអប់រំ លើកទី១ នៅកម្ពុជា (The First Cambodia
+“មាគ៌ាឆ្ពោះទៅកាន់ការអប់រំឌីជីថល
+EdTech Summit)
+នឹងត្រូវរៀបចំឡើងក្រោមប្រធានបទ
+វិទ្យាស្ថានបច្ចេកវិទ្យា 
+កម្ពុជា
+” នឹងប្រព្រឹត្តទៅនៅថ្ងៃទី១៧ ដល់ ១៨ ខែកុម្ភៈ ឆ្នាំ២០២៥ នៅ
+កម្ពុជ
+។ ប្រធានបទនៃសន្និសីទ និងពិព័ណ៌ ឆ្នាំនេះ ផ្តោតលើការពិភាក្សាលើការស្វែងរកប្រព័ន្ធ
+អេកូឡូស៊ី បច្ចេកវិទ្យាអប់រំ (EdTech) គាំទ្រការអប់រំប្រកបដោយសមធម៌ និរន្តរភាព និង
+សុវត្ថិភាព ការបង្កើតថ្មី និងការអភិវឌ្ឍជំនាញនៅកម្ពុជា។ តាមរយៈការពិភាក្សាដ៏ស៊ីជម្រៅនានា
+ការតាំងពិព័ណ៌បច្ចេកវិទ្យាបម្រើការអប់រំ និងការបង្កើតឱកាសទំនាក់ទំនង សន្និសិទ្ធនេះមាន
+គោលបំណងជំរុញនវានុវត្តន៍បច្ចេកវិទ្យាក្នុងវិស័យអប់រំ លើកកម្ពស់កិច្ចសហប្រតិបត្តិការ នឹងពន្លឿន
+ការបញ្ចូលបច្ចេកវិទ្យាជំនួយការបង្រៀន ការរៀន និងអភិបាលកិច្ច ដើម្បីចូលរួមរៀបចំអនាគតនៃ
+ការអប់រំតាមបែបនីធីចលនៅកម្ពុជា។
+                  </p>
+
+                  <p>
+                   សន្និសីទ និងពិព័រណ៍បច្ចេកវិទ្យាអប់រំកម្ពុជា គឺជាវេទិកាដំបូង និងធំជាងគេបំផុតរបស់ប្រទេស
+សម្រាប់ការប្រជុំពិភាក្សា និងកិច្ចសហការដើម្បីលើកកម្ពស់ការអប់រំតាមរយៈបច្ចេកវិទ្យា ដែល
+សហការរៀបចំដោយ
+ក្រសួងអប់រំ យុវជន និងកីឡា
+ ក្រោមការសម្របសម្រួលរបស់
+នាយក
+ដ្ឋានគោលនយោបាយ (DoPo)
+និងដៃគូអភិវឌ្ឍន៍ ដែលព្រឹត្តិការណ៍ដ៏សំខាន់នេះ មាន
+គោលបំណងប្រមូលផ្តុំគ្រប់ភាគីពាក់ព័ន្ឋសំខាន់ៗ ដើម្បីត្រួសត្រាយអនាគតនៃការអប់រំតាម
+បែបនីធីចលនៅកម្ពុជា។
+                  </p>
+                  <p>
+                    នៅពេលដែលពិភពលោកអភិវឌ្ឍកាន់តែខ្លាំងលើឌីជីថល វិស័យអប់រំត្រូវតែសម្របខ្លួនដើម្បីបំពេញ
+តម្រូវការនៃសតវត្សទី ២១ ។ សន្និសីទ និងពិព័រណ៍បច្ចេកវិទ្យាអប់រំកម្ពុជា ជាវេទិកាមួយដើម្ប
+ស្វែងរកដំណោះស្រាយនៃបញ្ហាប្រឈមនានា និងឱកាសនៃការបញ្ចូលបច្ចេកវិទ្យាទៅក្នុងវិស័យអប់រំ
+រដ្ឋបាល សាលារៀន និងសាកលវិទ្យាល័យនៅកម្ពុជា។ ព្រឹត្តិការណ៍នេះនឹងប្រមូលផ្តុំអ្នក
+បង្កើត
+គោលនយោបាយ អ្នកអប់រំ នាយកសាលា អ្នកគ្រប់គ្រងផ្នែកព័ត៌មានវិទ្យា អ្នកច្នៃប្រឌិត
+បច្ចេកវិទ្យាអប់រំ និងក្រុមហ៊ុនឯកជន
+ដែលធ្វើឱ្យវាក្លាយជាវេទិកាដ៏ទូលំទូលាយបំផុតដើម្បីពិភាក្សា
+នឹងទាញយកប្រយោជន៍ពីបច្ចេកវិទ្យានីជីថលបម្រើការអប់រំ។
+                  </p>
+                   <div className="bg-white border-2 border-gray-200 rounded-lg p-4 text-center shadow-sm">
                     <div className="bg-gray-100 h-32 rounded flex items-center justify-center mb-3">
                       <span className="text-4xl">📋</span>
                     </div>
@@ -165,80 +181,84 @@ const Summit2025_about = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Right Column - Khmer Content */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-blue-900 mb-4">គោលដៅសន្និសីទ</h3>
-                <div className="space-y-4 text-gray-700 leading-relaxed">
-                  <p>
-                    កំណត់និង ស្វែងយល់ពីបញ្ហាប្រឈម និងឱកាសអនុវត្តន៍បច្ចេកវិទ្យាអប់រំនៅក្នុងប្រព័ន្ធអប់រំកម្ពុជា។ រកវិធីសាស្រ្តគ្រប់គ្រងនិងអភិវឌ្ឍនូវគំនិតរួម ទៅកាន់ការអនុវត្តន៍ប្រកបដោយភាពមនុស្សធម៌។
-                  </p>
-                  
-                  <p>
-                    តាមរយៈសកម្មភាពនានា ដូចជា <strong>ការបង្ហាញបច្ចេកវិទ្យាអប់រំ</strong> ការពិភាក្សា និងការតភ្ជាប់បណ្តាញ សន្និសីទនេះនឹងបម្រើជាវេទិកាមួយសម្រាប់ការចែករំលែកបទពិសោធន៍ និងការអនុវត្តប្រកបដោយគុណភាព។
-                  </p>
-
-                  <p>
-                    <strong>EdTech Summit ប្រចាំឆ្នាំនេះ</strong> នឹងត្រូវបានរៀបចំឡើងដោយក្រសួងអប់រំ យុវជន និងកីឡា ក្នុងនាមជាស្ថាប័នជាតិអភិវឌ្ឍបច្ចេកវិទ្យាអប់រំ ដើម្បីបង្កើតការតភ្ជាប់ និងសហប្រតិបត្តិការរវាងភាគីពាក់ព័ន្ធ។
-                  </p>
-                </div>
-              </div>
             </div>
           </section>
 
           {/* Promotional Banner */}
           <section className="mb-16">
-            <div className="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-2xl p-8 text-white text-center">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div>
-                  <img src={edtechLogo} alt="EdTech Cambodia" className="h-24 mx-auto mb-4" />
-                  <h4 className="text-xl font-bold">សន្និសីទ និងកំណត់គោលការណ៍បច្ចេកវិទ្យាអប់រំកម្ពុជា លើកទីមួយ</h4>
-                  <p className="text-blue-200">The First Cambodia EdTech Summit</p>
-                  <button className="bg-yellow-500 text-blue-900 px-6 py-2 rounded-lg font-bold mt-4">
-                    Pathway to Cambodia's Digital Education
-                  </button>
-                </div>
-                
-                <div className="text-center">
-                  <h5 className="text-2xl font-bold mb-2">កាលបរិច្ឆេទ</h5>
-                  <p className="text-3xl font-bold text-yellow-400">១៧-១៨</p>
-                  <p className="text-xl">កុម្ភៈ ២០២៥</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="bg-white p-4 rounded-lg inline-block">
-                    <div className="w-24 h-24 bg-gray-200 rounded flex items-center justify-center">
-                      <span className="text-2xl">📱</span>
-                    </div>
-                  </div>
-                  <p className="mt-2 text-sm">Scan QR Code for more info</p>
-                </div>
-              </div>
+            <div className=" text-white text-center">
+             <img src= {banner} alt="banner" />
             </div>
           </section>
+          <div className="border-1 border-gray-700"></div>
 
           {/* Feature Programs Section */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold text-center text-blue-900 mb-12">Feature Programs</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {featurePrograms.map((program, index) => (
-                <MOTION.div
-                  key={index}
-                  className="text-center"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2, duration: 0.6 }}
-                >
-                  <div className="bg-gray-100 p-6 rounded-lg mb-4 h-32 flex items-center justify-center">
-                    <img src={program.image} alt={program.title} className="max-h-full max-w-full object-contain" />
-                  </div>
-                  <h3 className="text-lg font-bold text-blue-900 mb-2">{program.title}</h3>
-                  <p className="text-sm text-gray-600">{program.description}</p>
-                </MOTION.div>
-              ))}
-            </div>
-          </section>
-
+                   <section className=" py-16 text-center">
+                     <div className="max-w-7xl mx-auto px-4">
+                       <MOTION.h2 
+                         className="text-4xl font-bold mb-16 uppercase text-gray-800" 
+                         initial={{ opacity: 0, y: -20 }}
+                         animate={{ opacity: 1, y: 0 }}
+                         transition={{ duration: 0.8 }}
+                       >
+                         FEATURE PROGRAMS
+                       </MOTION.h2>
+                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                         {[
+                           {
+                             title: 'KEYNOTE',
+                             desc: 'Key insights and updates from national and international experts on the current and future vision of EdTech.',
+                             img: keynoteImage,
+                           },
+                           {
+                             title: 'PANEL DISCUSSION',
+                             desc: 'Navigating the EdTech ecosystem for equitable, sustainable and safe education, innovation, and skills development in Cambodia.',
+                             img: panelImage,
+                           },
+                           {
+                             title: 'EDTECH SHOWCASE',
+                             desc: 'Exhibition of EdTech initiatives from both public and private sectors and opportunity for collaborations.',
+                             img: showcaseImage,
+                           },
+                           {
+                             title: 'COMPETITION',
+                             desc: 'Most innovative EdTech Teacher and Public Digital, Media and Information Literacy Challenge.',
+                             img: showcaseImage,
+                           },
+                         ].map((prog, idx) => (
+                           <MOTION.div
+                             key={idx}
+                             className="bg-white rounded-lg overflow-hidden flex flex-col "
+                             initial={{ opacity: 0, y: 30 }}
+                             animate={{ opacity: 1, y: 0 }}
+                             transition={{ delay: idx * 0.2, duration: 0.6 }}
+                             whileHover={{ y: -5 }}
+                           >
+                             {/* Image Section */}
+                             <div className="flex justify-center items-center h-48 p-6">
+                               <img 
+                                 src={prog.img} 
+                                 alt={prog.title} 
+                                 className="max-h-full max-w-full object-contain"
+                               />
+                             </div>
+                             
+                             {/* Title Section */}
+                             <div className=" text-black uppercase font-bold text-lg py-4 px-4">
+                               {prog.title}
+                             </div>
+                             
+                             {/* Description Section */}
+                             <div className="p-6 flex-grow flex items-center">
+                               <p className="text-sm text-gray-700 leading-relaxed text-center">
+                                 {prog.desc}
+                               </p>
+                             </div>
+                           </MOTION.div>
+                         ))}
+                       </div>
+                     </div>
+                   </section>
         </main>
       </div>
     </>

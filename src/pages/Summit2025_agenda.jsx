@@ -1,305 +1,157 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, MapPin, Users, Video, Coffee, Award } from 'lucide-react';
+import { Users, Award, Video, Coffee } from 'lucide-react';
 import Summit2025_navbar from '@/components/section/Summit2025_navbar';
 import Summit2025_HeroSection from '@/components/section/Summit2025_HeroSection';
+import speaker1 from '@/assets/images/speaker/speaker1.png'
 
 const Summit2025_agenda = () => {
-  const [selectedDay, setSelectedDay] = useState(1);
+  const [activeTab, setActiveTab] = useState('day1');
 
   const agendaData = {
     1: {
-      date: "March 15, 2025",
-      theme: "Foundation Day - Setting the Stage",
+      date: "Day 1",
+      theme: "High-Level Summit & Strategic Presentations",
       sessions: [
         {
-          time: "8:00 - 9:00 AM",
-          title: "Registration & Welcome Coffee",
-          type: "networking",
-          location: "Main Lobby",
-          description: "Registration, networking, and welcome refreshments"
+          time: "7:00 - 8:00",
+          agenda: "Registration & EdTech Exhibition",
+          remarks: "EdTech Cambodia Team"
         },
         {
-          time: "9:00 - 9:30 AM",
-          title: "Opening Ceremony",
-          type: "ceremony",
-          location: "Main Hall",
-          speaker: "H.E. Dr. Hang Chuon Naron, Minister of Education, Youth and Sport",
-          description: "Official opening and welcome address"
+          time: "8:00 - 8:30",
+          agenda: "Arrival of H.E. Dr. Hang Chuon Naron, Deputy Prime Minister, Minister of MoEYS, and the High Esteemed Representative for Samdech Moha Borvor Thipadei HUN MANET, Prime Minister of the Kingdom of Cambodia",
+          remarks: "EdTech Cambodia Team"
         },
         {
-          time: "9:30 - 10:30 AM",
-          title: "Keynote: The Future of Education in the Digital Age",
-          type: "keynote",
-          location: "Main Hall",
-          speaker: "Dr. Andreas Schleicher, Director of Education, OECD",
-          description: "Vision for transforming education through technology"
+          time: "",
+          agenda: "Track 1 | High-Level Summit (2,400 Invited Guests Only)",
+          remarks: "",
+          isTrackHeader: true
         },
         {
-          time: "10:30 - 11:00 AM",
-          title: "Coffee Break & Networking",
-          type: "break",
-          location: "Exhibition Area",
-          description: "Refreshments and technology showcase"
+          time: "8:30 - 8:35",
+          agenda: "Cambodian National Anthem",
+          remarks: "EdTech Cambodia Team"
         },
         {
-          time: "11:00 - 12:00 PM",
-          title: "Panel: EdTech Policy and Governance",
-          type: "panel",
-          location: "Main Hall",
-          speaker: "Regional Education Ministers & Policy Experts",
-          description: "Policy frameworks for successful EdTech integration"
+          time: "8:35 - 8:45",
+          agenda: "Welcoming Remarks",
+          remarks: "H.E. Kim Sothany, Permanent Secretary of State, MoEYS and Deputy Chair of Organizing Committee of the First Cambodia EdTech Summit"
         },
         {
-          time: "12:00 - 1:30 PM",
-          title: "Lunch & Exhibition Tour",
-          type: "networking",
-          location: "Exhibition Hall",
-          description: "Networking lunch with technology demonstrations"
+          time: "8:45 - 8:55",
+          agenda: "Welcoming Remarks",
+          remarks: "Mr. Simon Perkins, ICT Division CEO, Cellcard"
         },
         {
-          time: "1:30 - 2:30 PM",
-          title: "Workshop Track A: AI in Education",
-          type: "workshop",
-          location: "Workshop Room 1",
-          speaker: "Prof. Rose Luckin, University College London",
-          description: "Hands-on exploration of AI-powered learning tools"
+          time: "8:55 - 9:05",
+          agenda: "Welcoming Remarks",
+          remarks: "Dr. Aekram Chantrajaya, Deputy Representative, UNICEF Cambodia"
         },
         {
-          time: "1:30 - 2:30 PM",
-          title: "Workshop Track B: Mobile Learning Solutions",
-          type: "workshop",
-          location: "Workshop Room 2",
-          speaker: "EdTech Cambodia Team",
-          description: "Building effective mobile learning experiences"
+          time: "9:05 - 9:15",
+          agenda: "Welcoming Remarks",
+          remarks: "Ms. Moeujong Chol, Country Director, KOICA"
         },
         {
-          time: "2:45 - 3:45 PM",
-          title: "Innovation Showcase: Startup Pitch Session",
-          type: "showcase",
-          location: "Innovation Lab",
-          speaker: "Selected EdTech Startups",
-          description: "Emerging technologies and innovative solutions"
+          time: "9:15 - 9:45",
+          agenda: "Opening Remarks",
+          remarks: "H.E. Dr. Hang Chuon Naron, Deputy Prime Minister, MoEYS and the High Esteemed Representative for Samdech Moha Borvor Thipadei HUN MANET, Prime Minister of the Kingdom of Cambodia"
         },
         {
-          time: "4:00 - 5:00 PM",
-          title: "Regional Collaboration Forum",
-          type: "forum",
-          location: "Main Hall",
-          speaker: "ASEAN Education Technology Network",
-          description: "Building partnerships across Southeast Asia"
+          time: "9:45",
+          agenda: "Appreciation Letter for Strategic Partners",
+          remarks: "EdTech Cambodia Team"
         },
         {
-          time: "6:00 - 8:00 PM",
-          title: "Welcome Reception & Cultural Performance",
-          type: "networking",
-          location: "Grand Ballroom",
-          description: "Networking reception with traditional Cambodian performance"
+          time: "9:45",
+          agenda: "Photo Session",
+          remarks: "EdTech Cambodia Team"
+        },
+        {
+          time: "9:55 - 10:05",
+          agenda: "Official Launch of the Digital Education Strategy for Schools (DESS)",
+          remarks: "H.E. Dr. Be Chanraksmeydech, Under Secretary of State, MoEYS"
+        },
+        {
+          time: "10:05 - 10:15",
+          agenda: "Project Launch: \"Strengthening Decisionsmakers' Capabilities for Appropriate EdTech Use in Cambodia\"",
+          remarks: "Dr. Eng Netra, Executive Director, Cambodia Development Resource Institute, CDRI"
+        },
+        {
+          time: "",
+          agenda: "Press Conference",
+          remarks: ""
+        },
+        {
+          time: "",
+          agenda: "• H.E. Dr. Hang Chuon Naron | MoEYS\n• Ms. Moeujong Chol, Country Director | KOICA\n• Dr. Aekram Chantrajaya, Deputy Representative, UNICEF Cambodia\n• Mr. Simon Perkins | Cellcard\n• Dr. Eng Netra | CDRI",
+          remarks: "EdTech Cambodia Team"
+        },
+        {
+          time: "10:25 - 10:40",
+          agenda: "Strategic Presentation 1 | Digital Education Strategy for Schools (DESS)",
+          remarks: "Dr. Chin Sam Aek, Deputy Director, Department of Policy, MoEYS"
+        },
+        {
+          time: "10:40 - 10:55",
+          agenda: "Strategic Presentation 2 | Streamline Your School's Operations and Boost Efficiency with a Centralized Dashboard",
+          remarks: "Mr. Im Chansitha, Lead, Strategy and Partnership, Cellcard"
+        },
+        {
+          time: "",
+          agenda: "Panel Discussion 1 | Cambodia Digital School Initiatives Toward Achieving DESS",
+          remarks: "Moderator: H.E. Dr. Chhialy Bitka - MoEYS's Advisor\nPanelists:"
+        },
+        {
+          time: "10:55 - 11:30",
+          agenda: "Triggering Presentation: \"Cambodia Digital School\"\nPresented by: H.E. Tep Piphyuth, Secretary General of General Secretariat, MoEYS",
+          remarks: "1. H.E. Tep Piphyuth, Secretary General of General Secretariat, MoEYS\n2. Ms. Chie Jongman, Deputy Country Director, ActionA\n3. Ms. Mout Sorphal, Vice Principal of Fresh Summit High School, New Generation School (NGS)\n4. H.E. Dr. Chea Sodeth, Director of Battambang Teacher Education College\n5. Mr. Nguv Socheanneath, Education Officer, UNICEF Cambodia"
+        },
+        {
+          time: "12:30 - 14:00",
+          agenda: "Breakfast & EdTech Exhibition",
+          remarks: ""
+        },
+        {
+          time: "",
+          agenda: "Track 2 | Skills for Cambodia's Digital Future",
+          remarks: "",
+          isTrackHeader: true
+        },
+        {
+          time: "",
+          agenda: "Panel Discussion 2 | Digital Transitions in Education and Skills Development",
+          remarks: "Moderator: Dr. Song Sopheak, Deputy Executive Director, CDRI\nPanelists:"
+        },
+        {
+          time: "14:00 - 15:30",
+          agenda: "Triggering Presentation: \"Decoding the Demand and Supply: Critical Digital Skills for Cambodia's Evolving Economy\"\n\nPresented by: H.E. Hean Samboeun, Vice-President, CADT",
+          remarks: "1. H.E. Hean Samboeun, Vice-President, of CADT\n2. Ms. Mae Sophia, Senior Officer in Education and Skills, ADB Cambodia\n3. Ms. Kit Sophana, Deputy Director of the Department of Job Market Information, MoLVT\n4. Mrs. Sokhoeung Lay, Managing Director of Orth Academy\n5. Mr. Tio Botka, Managing Director and Co-Founder, Doorkbeek Digital"
+        },
+        {
+          time: "15:30 - 15:45",
+          agenda: "2024 Most Innovative EdTech Teacher Competition",
+          remarks: "The Top Three Candidates"
+        },
+        {
+          time: "15:45 - 16:00",
+          agenda: "2024 Most Innovative EdTech Teacher Award & Closing Remarks – Day 1",
+          remarks: "H.E. Kim Sothany, Permanent Secretary of States, MoEYS"
+        },
+        {
+          time: "16:00 - 17:00",
+          agenda: "Break Time & EdTech Exhibition – End of Day 1",
+          remarks: ""
         }
       ]
     },
     2: {
-      date: "March 16, 2025",
-      theme: "Innovation Day - Exploring Solutions",
+      date: "Day 2",
+      theme: "Continue with additional sessions",
       sessions: [
-        {
-          time: "8:30 - 9:00 AM",
-          title: "Morning Coffee & Networking",
-          type: "networking",
-          location: "Main Lobby",
-          description: "Start the day with networking and coffee"
-        },
-        {
-          time: "9:00 - 10:00 AM",
-          title: "Keynote: Personalized Learning at Scale",
-          type: "keynote",
-          location: "Main Hall",
-          speaker: "Dr. Neil Heffernan, Worcester Polytechnic Institute",
-          description: "How technology enables personalized education for every learner"
-        },
-        {
-          time: "10:00 - 10:30 AM",
-          title: "Coffee Break",
-          type: "break",
-          location: "Exhibition Area",
-          description: "Refreshments and solution demonstrations"
-        },
-        {
-          time: "10:30 - 11:30 AM",
-          title: "Deep Dive: Virtual & Augmented Reality in Learning",
-          type: "workshop",
-          location: "VR/AR Lab",
-          speaker: "Meta Education Team",
-          description: "Immersive learning experiences with VR/AR technology"
-        },
-        {
-          time: "11:45 AM - 12:45 PM",
-          title: "Panel: Teacher Professional Development in Digital Age",
-          type: "panel",
-          location: "Main Hall",
-          speaker: "International Teacher Training Experts",
-          description: "Preparing educators for technology-enhanced teaching"
-        },
-        {
-          time: "12:45 - 2:00 PM",
-          title: "Innovation Lunch & Solution Marketplace",
-          type: "networking",
-          location: "Solution Marketplace",
-          description: "Interactive lunch with hands-on technology experiences"
-        },
-        {
-          time: "2:00 - 3:00 PM",
-          title: "Track A: Data Analytics for Educational Insights",
-          type: "workshop",
-          location: "Analytics Lab",
-          speaker: "Cambridge Assessment Team",
-          description: "Using data to improve learning outcomes"
-        },
-        {
-          time: "2:00 - 3:00 PM",
-          title: "Track B: Inclusive Design in EdTech",
-          type: "workshop",
-          location: "Design Studio",
-          speaker: "Microsoft Accessibility Team",
-          description: "Creating technology that works for all learners"
-        },
-        {
-          time: "3:15 - 4:15 PM",
-          title: "Young Innovators Showcase",
-          type: "showcase",
-          location: "Innovation Stage",
-          speaker: "Student Innovators from Cambodian Universities",
-          description: "Next generation solutions by young entrepreneurs"
-        },
-        {
-          time: "4:30 - 5:30 PM",
-          title: "Roundtable: Sustainable EdTech Implementation",
-          type: "roundtable",
-          location: "Conference Room",
-          speaker: "Ministry Officials & Implementation Partners",
-          description: "Strategies for long-term success in EdTech adoption"
-        },
-        {
-          time: "7:00 - 9:00 PM",
-          title: "Innovation Awards Gala Dinner",
-          type: "ceremony",
-          location: "Grand Ballroom",
-          description: "Celebrating excellence in educational technology innovation"
-        }
+        // Add Day 2 sessions if needed
       ]
-    },
-    3: {
-      date: "March 17, 2025",
-      theme: "Implementation Day - Making it Happen",
-      sessions: [
-        {
-          time: "8:30 - 9:00 AM",
-          title: "Final Day Welcome & Coffee",
-          type: "networking",
-          location: "Main Lobby",
-          description: "Energizing start to implementation planning"
-        },
-        {
-          time: "9:00 - 10:00 AM",
-          title: "Keynote: From Pilot to Scale - Implementation Success Stories",
-          type: "keynote",
-          location: "Main Hall",
-          speaker: "Dr. Dani Ben-Zvi, University of Haifa",
-          description: "Lessons learned from successful EdTech implementations worldwide"
-        },
-        {
-          time: "10:00 - 10:30 AM",
-          title: "Coffee Break",
-          type: "break",
-          location: "Exhibition Area",
-          description: "Final networking with exhibitors"
-        },
-        {
-          time: "10:30 - 11:30 AM",
-          title: "Implementation Workshop: Creating Your EdTech Roadmap",
-          type: "workshop",
-          location: "Strategy Room",
-          speaker: "Implementation Strategy Consultants",
-          description: "Practical planning for EdTech integration"
-        },
-        {
-          time: "11:45 AM - 12:45 PM",
-          title: "Panel: Funding and Sustainability Models",
-          type: "panel",
-          location: "Main Hall",
-          speaker: "Development Banks & Investment Partners",
-          description: "Financial strategies for sustainable EdTech programs"
-        },
-        {
-          time: "12:45 - 1:45 PM",
-          title: "Working Lunch: Partnership Formation",
-          type: "networking",
-          location: "Partnership Hub",
-          description: "Facilitated partnership matching and collaboration planning"
-        },
-        {
-          time: "1:45 - 2:45 PM",
-          title: "Action Planning Session",
-          type: "workshop",
-          location: "Main Hall",
-          speaker: "Summit Facilitators",
-          description: "Collaborative development of next steps and commitments"
-        },
-        {
-          time: "3:00 - 3:45 PM",
-          title: "Summit Outcomes & Recommendations Report",
-          type: "presentation",
-          location: "Main Hall",
-          speaker: "Summit Rapporteurs",
-          description: "Synthesis of key insights and recommendations"
-        },
-        {
-          time: "3:45 - 4:30 PM",
-          title: "Closing Ceremony & Call to Action",
-          type: "ceremony",
-          location: "Main Hall",
-          speaker: "Summit Leadership Committee",
-          description: "Commitment to action and future collaboration"
-        },
-        {
-          time: "4:30 - 5:00 PM",
-          title: "Farewell Reception",
-          type: "networking",
-          location: "Main Lobby",
-          description: "Final networking and safe travels"
-        }
-      ]
-    }
-  };
-
-  const getSessionIcon = (type) => {
-    switch (type) {
-      case 'keynote': return <Award className="w-5 h-5 text-yellow-500" />;
-      case 'panel': return <Users className="w-5 h-5 text-blue-500" />;
-      case 'workshop': return <Video className="w-5 h-5 text-green-500" />;
-      case 'networking': return <Coffee className="w-5 h-5 text-orange-500" />;
-      case 'break': return <Coffee className="w-5 h-5 text-gray-500" />;
-      case 'ceremony': return <Award className="w-5 h-5 text-purple-500" />;
-      case 'showcase': return <Award className="w-5 h-5 text-indigo-500" />;
-      case 'forum': return <Users className="w-5 h-5 text-teal-500" />;
-      case 'roundtable': return <Users className="w-5 h-5 text-pink-500" />;
-      case 'presentation': return <Video className="w-5 h-5 text-red-500" />;
-      default: return <Clock className="w-5 h-5 text-gray-500" />;
-    }
-  };
-
-  const getSessionBorderColor = (type) => {
-    switch (type) {
-      case 'keynote': return 'border-l-yellow-500';
-      case 'panel': return 'border-l-blue-500';
-      case 'workshop': return 'border-l-green-500';
-      case 'networking': return 'border-l-orange-500';
-      case 'break': return 'border-l-gray-500';
-      case 'ceremony': return 'border-l-purple-500';
-      case 'showcase': return 'border-l-indigo-500';
-      case 'forum': return 'border-l-teal-500';
-      case 'roundtable': return 'border-l-pink-500';
-      case 'presentation': return 'border-l-red-500';
-      default: return 'border-l-gray-500';
     }
   };
 
@@ -310,8 +162,7 @@ const Summit2025_agenda = () => {
         <Summit2025_HeroSection 
           title="Summit Agenda"
           subtitle="2025"
-          description="Explore our comprehensive three-day program featuring keynotes, workshops, panels, and networking opportunities"
-          showButtons={false}
+          description="Explore our comprehensive program featuring keynotes, workshops, panels, and networking opportunities"
         />
 
         {/* Navigation Tabs */}
@@ -320,75 +171,372 @@ const Summit2025_agenda = () => {
         {/* Main Content */}
         <main className="container mx-auto px-4 py-12">
           
-          {/* Day Selection */}
+          {/* Tab Selection */}
           <section className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-blue-900 mb-4">Three Days of Innovation</h2>
-              <p className="text-xl text-gray-600">Select a day to view the detailed agenda</p>
+              <h2 className="text-3xl font-bold text-blue-900 mb-4">Summit Program</h2>
+              <p className="text-xl text-gray-600">Navigate through different sections of the summit</p>
             </div>
             
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-              {[1, 2, 3].map((day) => (
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              {[
+                { id: 'day1', label: 'DAY 1', color: 'bg-red-500' },
+                { id: 'day2', label: 'DAY 2', color: 'bg-gray-400' },
+                { id: 'speakers', label: 'SPEAKERS', color: 'bg-gray-400' },
+                { id: 'panel', label: 'PANEL DISCUSSION', color: 'bg-gray-400' }
+              ].map((tab) => (
                 <button
-                  key={day}
-                  onClick={() => setSelectedDay(day)}
-                  className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 ${
-                    selectedDay === day
-                      ? 'bg-gradient-to-r from-emerald-500 to-blue-500 text-white shadow-lg transform scale-105'
-                      : 'bg-white text-gray-700 border border-gray-300 hover:border-blue-300 hover:text-blue-600'
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-6 py-3 font-bold text-white text-sm transition-all duration-300 ${
+                    activeTab === tab.id
+                      ? 'bg-red-500'
+                      : 'bg-gray-400 hover:bg-gray-500'
                   }`}
                 >
-                  <div className="text-lg font-bold">Day {day}</div>
-                  <div className="text-sm opacity-80">{agendaData[day].date}</div>
+                  {tab.label}
                 </button>
               ))}
             </div>
 
-            {/* Day Theme */}
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {agendaData[selectedDay].theme}
-              </h3>
-              <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto"></div>
-            </div>
+            {/* Day Theme - only show for day tabs */}
+            {(activeTab === 'day1' || activeTab === 'day2') && (
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {activeTab === 'day1' ? agendaData[1].theme : agendaData[2].theme}
+                </h3>
+                <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto"></div>
+              </div>
+            )}
           </section>
 
-          {/* Sessions */}
+          {/* Content Sections */}
           <section>
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-4">
-                {agendaData[selectedDay].sessions.map((session, index) => (
-                  <div
-                    key={index}
-                    className={`bg-white rounded-xl shadow-md border-l-4 ${getSessionBorderColor(session.type)} p-6 hover:shadow-lg transition-shadow duration-300`}
-                  >
-                    <div className="flex flex-col md:flex-row md:items-start md:space-x-6">
+            {/* Day 1 Content - Table Format */}
+            {activeTab === 'day1' && (
+              <div className="max-w-7xl mx-auto">
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                  <table className="w-full">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b">Time</th>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b">Agenda</th>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b">Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {agendaData[1].sessions.map((session, index) => (
+                        <tr key={index} className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} ${session.isTrackHeader ? 'bg-blue-50' : ''}`}>
+                          <td className="px-6 py-4 text-sm text-gray-900 border-b border-gray-200 align-top whitespace-nowrap">
+                            {session.time}
+                          </td>
+                          <td className={`px-6 py-4 text-sm border-b border-gray-200 align-top ${
+                            session.isTrackHeader ? 'font-bold text-blue-900 bg-blue-100' : 'text-gray-900'
+                          }`}>
+                            {session.agenda ? session.agenda.split('\n').map((line, i) => (
+                              <div key={i} className={i > 0 ? 'mt-1' : ''}>{line}</div>
+                            )) : ''}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-700 border-b border-gray-200 align-top">
+                            {session.remarks ? session.remarks.split('\n').map((line, i) => (
+                              <div key={i} className={i > 0 ? 'mt-1' : ''}>{line}</div>
+                            )) : ''}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Day 2 Content - Table Format */}
+            {activeTab === 'day2' && (
+              <div className="max-w-7xl mx-auto">
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                  <table className="w-full">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b">Time</th>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b">Agenda</th>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 border-b">Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {agendaData[2].sessions && agendaData[2].sessions.length > 0 ? agendaData[2].sessions.map((session, index) => (
+                        <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                          <td className="px-6 py-4 text-sm text-gray-900 border-b border-gray-200 align-top whitespace-nowrap">
+                            {session.time || ''}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-900 border-b border-gray-200 align-top">
+                            {session.agenda || ''}
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-700 border-b border-gray-200 align-top">
+                            {session.remarks || ''}
+                          </td>
+                        </tr>
+                      )) : (
+                        <tr>
+                          <td colSpan="3" className="px-6 py-8 text-center text-gray-500">
+                            Day 2 agenda coming soon...
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Speakers Content */}
+            {activeTab === 'speakers' && (
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Summit Speakers</h3>
+                  <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto"></div>
+                </div>
+                
+                {/* First Row of Speakers */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                  {[
+                    {
+                      name: "H.E. Dr. Hang Chuon Naron",
+                      title: "Deputy Prime Minister, Minister of MoEYS",
+                      image: speaker1 // Placeholder for actual image
+                    },
+                    {
+                      name: "H.E. Kim Sethany",
+                      title: "Permanent Secretary of State, MoEYS",
+                      image: speaker1  // Placeholder for actual image
+                    },
+                    {
+                      name: "Mr. Simon Perkins",
+                      title: "ICT Division CEO, Cellcard",
+                      image: speaker1  // Placeholder for actual image
+                    },
+                    {
+                      name: "Dr. Anirban Chatterjee",
+                      title: "Deputy Representative, UNICEF Cambodia",
+                      image: speaker1  // Placeholder for actual image
+                    }
+                  ].map((speaker, index) => (
+                    <div key={index} className="text-center">
+                      {/* Speaker Card with Dark Background */}
                       
-                      {/* Time and Icon */}
-                      <div className="flex items-center space-x-3 mb-4 md:mb-0 md:w-48 flex-shrink-0">
-                        {getSessionIcon(session.type)}
-                        <div>
-                          <div className="font-bold text-gray-900">{session.time}</div>
-                          <div className="flex items-center text-sm text-gray-500 mt-1">
-                            <MapPin className="w-4 h-4 mr-1" />
-                            {session.location}
+                        
+                        {/* Profile Picture with Gradient Border */}
+                        <div className="relative z-10 mx-auto mb-6">
+                          <div className=" mx-auto relative">
+                            {/* Gradient Border */}
+                              <div className="w-full h-full bg-white p-1">
+                                <img 
+                                  src={speaker.image} 
+                                  alt={speaker.name}
+                                  className="w-full h-full object-cover"
+                                />
+                            </div>
+                          </div>
+                        </div>
+                      
+                      {/* Speaker Info */}
+                      <div className="text-center">
+                        <h4 className="text-lg font-bold text-gray-900 mb-2">{speaker.name}</h4>
+                        <p className="text-gray-600 text-sm">{speaker.title}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Second Row of Speakers */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {[
+                    {
+                      name: "Ms. Moeujong Chol",
+                      title: "Country Director, KOICA",
+                      image: "/api/placeholder/200/200" // Placeholder for actual image
+                    },
+                    {
+                      name: "Dr. Eng Netra",
+                      title: "Executive Director, CDRI",
+                      image: "/api/placeholder/200/200" // Placeholder for actual image
+                    },
+                    {
+                      name: "H.E. Dr. Be Chanraksmeydech",
+                      title: "Under Secretary of State, MoEYS",
+                      image: "/api/placeholder/200/200" // Placeholder for actual image
+                    },
+                    {
+                      name: "Dr. Chin Sam Aek",
+                      title: "Deputy Director, Department of Policy, MoEYS",
+                      image: "/api/placeholder/200/200" // Placeholder for actual image
+                    }
+                  ].map((speaker, index) => (
+                    <div key={index} className="text-center">
+                      {/* Speaker Card with Dark Background */}
+                      <div className="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 rounded-2xl p-8 mb-4 relative overflow-hidden">
+                        {/* Decorative Elements */}
+                        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-pink-500 to-transparent opacity-30 rounded-full transform translate-x-16 -translate-y-16"></div>
+                        <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-500 to-transparent opacity-30 rounded-full transform -translate-x-12 translate-y-12"></div>
+                        
+                        {/* Profile Picture with Gradient Border */}
+                        <div className="relative z-10 mx-auto mb-6">
+                          <div className="w-32 h-32 mx-auto relative">
+                            {/* Gradient Border */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full p-1">
+                              <div className="w-full h-full bg-white rounded-full p-1">
+                                <img 
+                                  src={speaker.image} 
+                                  alt={speaker.name}
+                                  className="w-full h-full object-cover rounded-full"
+                                />
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      
+                      {/* Speaker Info */}
+                      <div className="text-center">
+                        <h4 className="text-lg font-bold text-gray-900 mb-2">{speaker.name}</h4>
+                        <p className="text-gray-600 text-sm">{speaker.title}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
-                      {/* Content */}
-                      <div className="flex-grow">
-                        <h4 className="text-lg font-bold text-gray-900 mb-2">{session.title}</h4>
-                        {session.speaker && (
-                          <p className="text-emerald-600 font-medium mb-2">{session.speaker}</p>
-                        )}
-                        <p className="text-gray-600">{session.description}</p>
+            {/* Panel Discussion Content */}
+            {activeTab === 'panel' && (
+              <div className="max-w-7xl mx-auto">
+                {/* Featured Panel Discussion Card */}
+                <div className="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 rounded-3xl p-8 mb-8 relative overflow-hidden">
+                  {/* Background Decorative Elements */}
+                  <div className="absolute inset-0 opacity-10">
+                    {/* Tech Icons Background */}
+                    <div className="absolute top-10 left-10 text-white text-6xl">⚙️</div>
+                    <div className="absolute top-20 right-20 text-white text-4xl">🔬</div>
+                    <div className="absolute bottom-20 left-20 text-white text-5xl">💡</div>
+                    <div className="absolute bottom-10 right-10 text-white text-4xl">🌐</div>
+                    <div className="absolute top-1/2 left-1/4 text-white text-3xl">⚡</div>
+                    <div className="absolute top-1/3 right-1/3 text-white text-4xl">🔧</div>
+                  </div>
+
+                  {/* Ministry Logo Section */}
+                  <div className="absolute top-4 left-4 flex items-center space-x-4">
+                    <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center">
+                      <span className="text-2xl">🏛️</span>
+                    </div>
+                    <div className="w-12 h-12 bg-blue-600 rounded flex items-center justify-center">
+                      <span className="text-white font-bold">E</span>
+                    </div>
+                  </div>
+
+                  {/* Summit Title */}
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-blue-800 text-white px-4 py-2 rounded text-sm font-semibold">
+                      EDUCATION<br/>INNOVATION<br/>TECHNOLOGY
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10 mt-16">
+                    {/* Left Side - Text Content */}
+                    <div className="text-white">
+                      {/* Khmer Title */}
+                      <div className="mb-6">
+                        <h2 className="text-yellow-400 text-lg font-medium mb-2">សន្និបាតចេះដឹង នថ្នី</h2>
+                        <p className="text-sm opacity-90 leading-relaxed">
+                          គំនិតផ្តួចផ្តើមដ៏អស្ចារ្យសម្រាប់ធ្វើឲ្យការសិក្សាកាន់តែប្រសើរ
+                          ការអនុវត្តនូវនិវត្តនកម្មសម្រាប់ការអភិវឌ្ឍន៍សាលារៀន
+                        </p>
+                      </div>
+
+                      {/* Main Topic */}
+                      <div className="mb-8">
+                        <h1 className="text-4xl font-bold mb-4">
+                          "ការប្រើប្រាស់ការអប់រំ<br/>ឌីជីតលកម្ពុជា"
+                        </h1>
+                      </div>
+
+                      {/* Speaker Information */}
+                      <div className="bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl p-6">
+                        <h3 className="text-white text-xl font-bold mb-2">
+                          បណ្ឌិតសភា អគ្គលេខាធិការ នស ភីរម្យ
+                        </h3>
+                        <p className="text-white text-sm opacity-90">
+                          អគ្គលេខាធិការ នៃអគ្គលេខាធិការដ្ឋាន កន្លងអប់រំ យុវជន និងកីឡា
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right Side - Speaker Image */}
+                    <div className="flex justify-center">
+                      <div className="relative">
+                        {/* Profile Picture with Gradient Border */}
+                        <div className="w-80 h-80 relative">
+                          <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full p-2">
+                            <div className="w-full h-full bg-white rounded-full p-2">
+                              <img 
+                                src="/api/placeholder/300/300" 
+                                alt="បណ្ឌិតសភា អគ្គលេខាធិការ នស ភីរម្យ"
+                                className="w-full h-full object-cover rounded-full"
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                ))}
+
+                  {/* Bottom Text */}
+                  <div className="absolute bottom-4 left-0 right-0 text-center text-white text-sm">
+                    <p>សន្និសីទ EdTech Cambodia ទី១ រៀបចំដោយ កម្ពុជា EdTech Summit</p>
+                  </div>
+                </div>
+
+                {/* Additional Panel Information */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                  {/* Panel 1 Information */}
+                  <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-l-blue-500">
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">Panel Discussion 1</h4>
+                    <h5 className="text-lg font-semibold text-blue-600 mb-3">Cambodia Digital School Initiatives Toward Achieving DESS</h5>
+                    <div className="mb-4">
+                      <p className="text-sm font-semibold text-gray-700 mb-2">Moderator:</p>
+                      <p className="text-sm text-gray-600">H.E. Dr. Chhialy Bitka, MoEYS's Advisor</p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 mb-2">Key Topics:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Digital transformation strategies</li>
+                        <li>• DESS implementation roadmap</li>
+                        <li>• Technology integration in schools</li>
+                        <li>• Teacher capacity building</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Panel 2 Information */}
+                  <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-l-green-500">
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">Panel Discussion 2</h4>
+                    <h5 className="text-lg font-semibold text-green-600 mb-3">Digital Transitions in Education and Skills Development</h5>
+                    <div className="mb-4">
+                      <p className="text-sm font-semibold text-gray-700 mb-2">Moderator:</p>
+                      <p className="text-sm text-gray-600">Dr. Song Sopheak, Deputy Executive Director, CDRI</p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 mb-2">Key Topics:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Skills for digital economy</li>
+                        <li>• Workforce development strategies</li>
+                        <li>• Public-private partnerships</li>
+                        <li>• Innovation in education</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </section>
 
           {/* Legend */}
