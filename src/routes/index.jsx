@@ -18,6 +18,9 @@ import Edtech2025Home from "@/pages/edtech-2025-home";
 import Edtech2025About from "@/pages/edtech-2025-about";
 import Edtech2025Agenda from "@/pages/edtech-2025-agenda";
 import EdTech2025Exhibitors from "@/pages/edtech-2025-exhibitors";
+import EdTech2025Contact from "@/pages/edtech-2025-contact";  
+import EdTech2025Partner from "@/pages/edtech-2025-partner";
+import Edtech2025Certificate from "@/pages/edtech-2025-certificate";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -39,7 +42,9 @@ export default function AppRoutes() {
           <Route path="/edtech-s2025/agenda" element={<Edtech2025Agenda/>}/>
           <Route path="/edtech-s2025/sponsors" element={<EdTech2025Exhibitors/>}/>
           <Route path="/edtech-s2025/awards" element={<div>EdTech S2025 Awards Page</div>}/>
-          <Route path="/edtech-s2025/contact" element={<div>EdTech S2025 Contact Page</div>}/>
+          <Route path="/edtech-s2025/contact" element={<EdTech2025Contact/>}/>
+          <Route path="/edtech-s2025/partner" element={<EdTech2025Partner/>}/>
+          <Route path="/edtech-s2025/certificate" element={<Edtech2025Certificate/>}/>
         </Route>
 
         {/* ICT4E Dedicated Routes - No EdTech navbar/footer */}
