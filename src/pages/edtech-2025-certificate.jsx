@@ -174,7 +174,6 @@ const EdTech2025Certificate = () => {
           {/* Powered by Sala */}
           <div className="text-center mt-8">
             <div className="inline-flex items-center space-x-2 text-sm text-gray-500">
-              <span>Powered By</span>
               <a 
                 href="https://www.sala.co" 
                 target="_blank" 

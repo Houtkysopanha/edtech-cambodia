@@ -50,6 +50,9 @@ export default function EdTech2025_header({ setIsMobileMenuOpen }) {
         </div>
       </div>
 
+      {/* Separator Line */}
+      <div className={`${isScrolled ? 'hidden' : 'block'} border-t border-white border-opacity-150`}></div>
+
       {/* Main Navigation Bar */}
       <header className={`transition-all duration-150 ease-out will-change-transform ${isScrolled ? 'fixed top-0 left-0 right-0 bg-white shadow-md text-gray-800 z-50' : 'text-white bg-transparent relative'}`}>
         <nav className={`relative z-10 flex justify-between items-center px-8 transition-all duration-150 ease-out will-change-transform ${isScrolled ? 'py-3' : 'py-6'}`}>
