@@ -56,30 +56,33 @@ const EdTech2025Award = () => {
         
         {/* Award Images Section */}
         <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-8 md:space-x-12">
-          <img 
-            src={firstAward} 
-            alt="1st Place Award" 
-            className="w-80 h-96 md:w-96 md:h-120 object-contain hover:scale-105 transition-transform duration-300 cursor-pointer rounded-xl"
-            style={{
+          <div className="w-80 h-30 md:w-96 md:h-50 rounded-2xl overflow-hidden  hover:scale-105 transition-transform duration-300 cursor-pointer" style={{
               filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5)) drop-shadow(0 -5px 10px rgba(0,0,0,0.3)) drop-shadow(-5px 0 10px rgba(0,0,0,0.3)) drop-shadow(5px 0 10px rgba(0,0,0,0.3))'
-            }}
-          />
-          <img 
-            src={secondAward} 
-            alt="2nd Place Award" 
-            className="w-80 h-96 md:w-96 md:h-120 object-contain hover:scale-105 transition-transform duration-300 cursor-pointer rounded-xl"
-            style={{
+            }}>
+            <img 
+              src={firstAward} 
+              alt="1st Place Award" 
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div className="w-80 h-30 md:w-96 md:h-50 rounded-2xl overflow-hidden bg-white/5 hover:scale-105 transition-transform duration-300 cursor-pointer" style={{
               filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5)) drop-shadow(0 -5px 10px rgba(0,0,0,0.3)) drop-shadow(-5px 0 10px rgba(0,0,0,0.3)) drop-shadow(5px 0 10px rgba(0,0,0,0.3))'
-            }}
-          />
-          <img 
-            src={thirdAward} 
-            alt="3rd Place Award" 
-            className="w-80 h-96 md:w-96 md:h-120 object-contain hover:scale-105 transition-transform duration-300 cursor-pointer rounded-xl"
-            style={{
+            }}>
+            <img 
+              src={secondAward} 
+              alt="2nd Place Award" 
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div className="w-80 h-30 md:w-96 md:h-50 rounded-2xl overflow-hidden bg-white/5 hover:scale-105 transition-transform duration-300 cursor-pointer" style={{
               filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5)) drop-shadow(0 -5px 10px rgba(0,0,0,0.3)) drop-shadow(-5px 0 10px rgba(0,0,0,0.3)) drop-shadow(5px 0 10px rgba(0,0,0,0.3))'
-            }}
-          />
+            }}>
+            <img 
+              src={thirdAward} 
+              alt="3rd Place Award" 
+              className="w-full h-full object-contain"
+            />
+          </div>
         </div>
       </section>
       
@@ -122,7 +125,7 @@ const EdTech2025Award = () => {
                   </div>
                   {/* English Text (slides up from bottom on hover) */}
                   <div className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-150 ease-in-out">
-                    <span className="text-lg font-bold">Learn More</span>
+                    <span className="text-lg font-bold">DETAIL INFO</span>
                   </div>
                 </Link>
               </div>
@@ -181,7 +184,8 @@ const EdTech2025Award = () => {
                 <img 
                   src={digitalMediaChallenge} 
                   alt="Digital Media and Information Literacy Challenge" 
-                  className="w-full h-auto rounded-lg"
+                  className="rounded-2xl"
+                  style={{ width: '530px', height: '300px', objectFit: 'cover',marginLeft: '50px',marginTop: '40px' }}
                 />
               </div>
               <div>
@@ -200,19 +204,20 @@ const EdTech2025Award = () => {
           
           {/* Bottom - Lucky Draw */}
           <div className="text-center">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">LUCKY DRAW</h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+              <div className="text-left">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">LUCKY DRAW</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  The <strong>Lucky Draw</strong> at the <strong>1st Cambodia EdTech Summit 2025</strong> offers attendees the chance to win exciting prizes, including EdTech gadgets, learning tools, and exclusive gifts. Simply register, attend the event, and be present during the draw for your chance to win!
+                </p>
+              </div>
               <div>
                 <img 
                   src={luckyDraw} 
                   alt="Lucky Draw" 
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto rounded-2xl"
+                  style={{ width: '530px', height: '300px', objectFit: 'cover',marginLeft: '50px',marginTop: '40px' }}
                 />
-              </div>
-              <div className="text-left">
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  The Lucky Draw at the 1st Cambodia EdTech Summit 2025 offers attendees the chance to win exciting prizes, including EdTech gadgets, learning tools, and exclusive gifts. Simply register, attend the event, and be present during the draw for your chance to win!
-                </p>
               </div>
             </div>
           </div>

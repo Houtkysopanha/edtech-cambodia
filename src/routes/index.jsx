@@ -22,6 +22,7 @@ import EdTech2025Contact from "@/pages/edtech-2025-contact";
 import EdTech2025Partner from "@/pages/edtech-2025-partner";
 import Edtech2025Certificate from "@/pages/edtech-2025-certificate";
 import EdTech2025Award from "@/pages/edtech-2025-award";
+import EdTech2025Award1 from "@/pages/edtech-2025-award-1";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -43,6 +44,7 @@ export default function AppRoutes() {
           <Route path="/edtech-s2025/agenda" element={<Edtech2025Agenda/>}/>
           <Route path="/edtech-s2025/sponsors" element={<EdTech2025Exhibitors/>}/>
           <Route path="/edtech-s2025/awards" element={<EdTech2025Award/>}/>
+          <Route path="/edtech-s2025/awards1" element={<EdTech2025Award1/>}/>
           <Route path="/edtech-s2025/contact" element={<EdTech2025Contact/>}/>
           <Route path="/edtech-s2025/partner" element={<EdTech2025Partner/>}/>
           <Route path="/edtech-s2025/certificate" element={<Edtech2025Certificate/>}/>
