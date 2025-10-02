@@ -40,7 +40,7 @@ const EdTech2025Award = () => {
           </div>
         </div>
         <Link 
-          to="#" 
+          to="/edtech-s2025/awards1" 
           className="relative bg-red-600 hover:bg-blue-600 text-white px-8 py-7 rounded-lg font-bold text-base transition-all duration-150 flex items-center justify-center w-[180px] h-[80px] group overflow-hidden transform hover:scale-105 hover:shadow-lg" 
           style={{ position: 'absolute', bottom: '480px', left: '50%', transform: 'translateX(-50%)' }}
         >
@@ -115,7 +115,7 @@ const EdTech2025Award = () => {
               {/* Red Button */}
               <div>
                 <Link 
-                  to="#" 
+                  to="/edtech-s2025/awards1" 
                   style={{ marginLeft: '50px' }}
                   className="relative bg-red-600 hover:bg-red-700 text-white px-4 py-4 rounded-lg font-bold transition-all duration-150 text-lg inline-block group overflow-hidden min-w-[100px] h-[60px] flex items-center justify-center"
                 >
