@@ -1,8 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const ICT4E_navbar = () => {
   const location = useLocation();
+  const [isFixed, setIsFixed] = useState(false);
+  const [navHeight, setNavHeight] = useState(0);
+  const [navOffsetTop, setNavOffsetTop] = useState(0);
+  const navRef = useRef(null);
+
+  // Handle scroll behavior
+  useEffect(() => {
+    const handleScroll = () => {
+      if (navRef.current) {
+        const currentScrollY = window.scrollY;
+        
+        // Set the original offset position and height once
+        if (navOffsetTop === 0 && navRef.current.offsetTop > 0) {
+          setNavOffsetTop(navRef.current.offsetTop);
+          setNavHeight(navRef.current.offsetHeight);
+        }
+        
+        // Check if we've scrolled past the navbar's original position
+        if (currentScrollY >= navOffsetTop) {
+          setIsFixed(true);
+        } else {
+          setIsFixed(false);
+        }
+      }
+    };
+
+    // Set initial measurements
+    if (navRef.current) {
+      setNavOffsetTop(navRef.current.offsetTop);
+      setNavHeight(navRef.current.offsetHeight);
+    }
+
+    // Add scroll listener with throttling for better performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledScroll);
+    return () => window.removeEventListener('scroll', throttledScroll);
+  }, [navOffsetTop]);
   
   // Function to determine active tab based on current route
   const getActiveTab = () => {
@@ -28,19 +75,33 @@ const ICT4E_navbar = () => {
   ];
 
   return (
-    <section 
-      className="bg-blue-900 text-white shadow-lg" 
-      style={{
-        padding: '20px 0', 
-        backgroundColor: 'white', 
-        borderRadius: '0 0 10px 10px', 
-        borderBottom: '4px solid transparent',
-        backgroundImage: 'linear-gradient(white, white), linear-gradient(to right, #ff7f00,  #ff0000, #4b0082)',
-        backgroundClip: 'padding-box, border-box',
-        backgroundOrigin: 'border-box',
-        boxShadow: '0 5px 8px rgba(0, 0, 0, 0.1)'
-      }}
-    >
+    <>
+      {/* Placeholder to maintain layout when navbar becomes fixed */}
+      {isFixed && (
+        <div 
+          style={{ height: navHeight }}
+          className="w-full"
+        />
+      )}
+      
+      <section 
+        ref={navRef}
+        className={`bg-blue-900 text-white shadow-lg transition-all duration-200 ease-out ${
+          isFixed 
+            ? 'fixed top-0 left-0 right-0 z-50' 
+            : 'relative'
+        }`}
+        style={{
+          padding: '20px 0', 
+          backgroundColor: 'white', 
+          borderRadius: '0 0 10px 10px', 
+          borderBottom: '4px solid transparent',
+          backgroundImage: 'linear-gradient(white, white), linear-gradient(to right, #ff7f00,  #ff0000, #4b0082)',
+          backgroundClip: 'padding-box, border-box',
+          backgroundOrigin: 'border-box',
+          boxShadow: '0 5px 8px rgba(0, 0, 0, 0.1)'
+        }}
+      >
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-center space-x-0 md:space-x-4">
           {navItems.map((item) => (
@@ -72,6 +133,7 @@ const ICT4E_navbar = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

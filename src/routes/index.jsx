@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from '../layouts/DefaultLayout';
 import ICT4E_Layout from '../layouts/ICT4E_Layout';
 import EdTech2025Layout from '../layouts/EdTech2025_Layout';
+import ScrollToTop from '../components/common/ScrollToTop';
 import Home from '../pages/Home';
 import AboutUs from '../pages/Aboutus';
 import React from 'react';
@@ -26,6 +27,7 @@ import EdTech2025Award1 from "@/pages/edtech-2025-award-1";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* EdTech Main Website Routes */}
         <Route element={<DefaultLayout />}>

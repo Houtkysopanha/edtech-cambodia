@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button"
 
 export default function ICT4E_Header() {
   return (
-    <header className="text-white bg-[url('./assets/images/themes.png')] bg-cover bg-center">
+    <header className="text-white bg-transparent bg-cover bg-center">
       {/* Top Info Bar */}
-      <div className="flex justify-between items-center px-6 py-6 text-sm ">
+      <div className="flex justify-between items-center px-6 py-6 text-sm bg-black/50 backdrop-blur-md">
         <div className="flex space-x-6">
           <div>
             <span className="text-1xl font-medium">ICT for Education: Network and Meeting</span>

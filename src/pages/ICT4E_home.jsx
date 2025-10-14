@@ -8,15 +8,16 @@ import ICT4E_Header from '@/components/section/ICT4E_header';
 const ICT4E_home = () => {
   return (
     <>
-      <div className="font-sans text-gray-800 bg-white min-h-screen">
+      <div className="font-sans text-gray-800 min-h-screen">
         {/* Hero Section */}
         <ICT4E_HeroSection />
 
       {/* Navigation Tabs */}
       <ICT4E_navbar activeTab="about-ict4e" />
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-12">
+      {/* Main Content with White Background */}
+      <div className="bg-white">
+        <main className="container mx-auto px-4 py-12">
         {/* Our Objective Section */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
@@ -148,6 +149,7 @@ const ICT4E_home = () => {
           </div>
         </section>
       </main>
+      </div>
       
     </div>
     </>

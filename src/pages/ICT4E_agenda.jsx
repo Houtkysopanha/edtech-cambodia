@@ -4,15 +4,16 @@ import ICT4E_HeroSection from '@/components/section/ICT4E_HeroSection';
 
 const ICT4E_agenda = () => {
   return (
-    <div className="font-sans text-gray-800 bg-white min-h-screen">
+    <div className="font-sans text-gray-800 min-h-screen">
       {/* Hero Section */}
       <ICT4E_HeroSection />
 
       {/* Navigation Tabs */}
       <ICT4E_navbar activeTab="public-agenda" />
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-12 max-w-6xl">
+      {/* Main Content with White Background */}
+      <div className="bg-white">
+        <main className="container mx-auto px-4 py-12 max-w-6xl">
         <section className="mb-16">
           <h1 className="text-4xl font-bold text-center mb-8">
             របៀបវារៈ
@@ -142,6 +143,7 @@ const ICT4E_agenda = () => {
           
         </section>
       </main>
+      </div>
     </div>
   );
 };

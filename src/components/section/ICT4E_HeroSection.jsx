@@ -1,5 +1,4 @@
 import React from 'react';
-import ICT4EBackground from '@/assets/images/ICT4E.png';
 
 const ICT4E_HeroSection = ({ 
   title = "ICT for Education Network Meeting", 
@@ -12,14 +11,11 @@ const ICT4E_HeroSection = ({
   onSecondaryClick
 }) => {
   return (
-    <section className="relative bg-black text-white py-20">
-      <div className="absolute inset-0 bg-black/30"></div>
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30"
-        style={{
-          backgroundImage: `url(${ICT4EBackground})`
-        }}
-      ></div>
+    <section className="relative text-white py-20 bg-transparent" style={{ background: 'transparent' }}>
+      {/* Semi-transparent overlay for text readability */}
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+      
+      {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center" style={{marginTop: '100px', marginBottom: '100px'}}>
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           {title} <span className="text-yellow-400">{subtitle}</span>

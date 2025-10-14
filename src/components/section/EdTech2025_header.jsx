@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaFacebookF, FaYoutube, FaTiktok, FaTelegramPlane } from 'react-icons/fa';
 
 export default function EdTech2025_header({ setIsMobileMenuOpen }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
+  const headerRef = useRef(null);
   const location = useLocation();
 
   // Function to check if a navigation link is active
@@ -14,12 +16,35 @@ export default function EdTech2025_header({ setIsMobileMenuOpen }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      const scrolled = window.scrollY > 0;
+      setIsScrolled(scrolled);
+      
+      // Track header height when it becomes fixed
+      if (scrolled && headerRef.current && headerHeight === 0) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    // Set initial header height
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+
+    // Add scroll listener with throttling for better performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledScroll);
+    return () => window.removeEventListener('scroll', throttledScroll);
+  }, [headerHeight]);
 
   const toggleMobileMenu = () => {
     const newState = !isMobileMenuToggled;
@@ -31,46 +56,53 @@ export default function EdTech2025_header({ setIsMobileMenuOpen }) {
 
   return (
     <>
-      {/* Top Bar - Follow us section */}
-      <div className={`relative z-10 flex justify-end items-center px-8 transition-all duration-100 ${isScrolled ? 'hidden' : 'py-3'} min-[746px]:flex hidden`}>
-        <span className="text-sm mr-4 text-white">Follow us:</span>
-        <div className="flex space-x-3">
-          <a href="https://www.facebook.com/edtechcambodia.org" className="text-white hover:text-blue-400 transition-colors duration-100">
-            <FaFacebookF className="w-4 h-4" />
-          </a>
-          <a href="https://www.youtube.com/@edtechcambodia" className="text-white hover:text-red-400 transition-colors duration-100">
-            <FaYoutube className="w-4 h-4" />
-          </a>
-          <a href="#" className="text-white hover:text-pink-400 transition-colors duration-100">
-            <FaTiktok className="w-4 h-4" />
-          </a>
-          <a href="https://t.me/edtechcambodia" className="text-white hover:text-blue-300 transition-colors duration-100">
-            <FaTelegramPlane className="w-4 h-4" />
-          </a>
+      {/* Placeholder to maintain layout when header becomes fixed */}
+      {isScrolled && (
+        <div 
+          style={{ height: headerHeight }}
+          className="w-full"
+        />
+      )}
+
+      <div ref={headerRef}>
+        {/* Top Bar - Follow us section */}
+        <div className={`relative z-10 flex justify-end items-center px-8 transition-all duration-200 ease-out ${isScrolled ? 'hidden' : 'py-3'} min-[746px]:flex hidden`}>
+          <span className="text-sm mr-4 text-white">Follow us:</span>
+          <div className="flex space-x-3">
+            <a href="https://www.facebook.com/edtechcambodia.org" className="text-white hover:text-blue-400 transition-colors duration-200">
+              <FaFacebookF className="w-4 h-4" />
+            </a>
+            <a href="https://www.youtube.com/@edtechcambodia" className="text-white hover:text-red-400 transition-colors duration-200">
+              <FaYoutube className="w-4 h-4" />
+            </a>
+            <a href="#" className="text-white hover:text-pink-400 transition-colors duration-200">
+              <FaTiktok className="w-4 h-4" />
+            </a>
+            <a href="https://t.me/edtechcambodia" className="text-white hover:text-blue-300 transition-colors duration-200">
+              <FaTelegramPlane className="w-4 h-4" />
+            </a>
+          </div>
         </div>
-      </div>
 
-      {/* Separator Line */}
-      <div className={`${isScrolled ? 'hidden' : 'block'} border-t border-white border-opacity-150`}></div>
+        {/* Separator Line */}
+        <div className={`${isScrolled ? 'hidden' : 'block'} border-t border-white border-opacity-150`}></div>
 
-      {/* Main Navigation Bar */}
-      <header className={`transition-all duration-150 ease-out will-change-transform ${isScrolled ? 'fixed top-0 left-0 right-0 bg-white shadow-md text-gray-800 z-50' : 'text-white bg-transparent relative'}`}>
-        <nav className={`relative z-10 flex justify-between items-center px-8 transition-all duration-150 ease-out will-change-transform ${isScrolled ? 'py-3' : 'py-6'}`}>
+        {/* Main Navigation Bar */}
+        <header className={`transition-all duration-200 ease-out will-change-transform ${isScrolled ? 'fixed top-0 left-0 right-0 bg-white shadow-md text-gray-800 z-50' : 'text-white bg-transparent relative'}`}>
+          <nav className={`relative z-10 flex justify-between items-center px-8 transition-all duration-200 ease-out will-change-transform ${isScrolled ? 'py-3' : 'py-6'}`}>
           
           {/* Logo */}
           <Link to="/edtech-s2025" className="flex items-center justify-center space-x-4">
             <img 
               src={isScrolled ? "/src/assets/images/edtech_logo.png" : "/src/assets/images/edtect_logo_white.png"}
               alt="EdTech Cambodia Logo" 
-              className={`w-auto transition-all duration-150 ease-out will-change-transform ${
+              className={`w-auto transition-all duration-200 ease-out will-change-transform ${
                 isScrolled 
                   ? 'h-10 sm:h-12 lg:h-14' 
                   : 'h-12 sm:h-16 lg:h-20'
               }`}
             />
-          </Link>
-
-          {/* Navigation Menu */}
+          </Link>          {/* Navigation Menu */}
           <div className="hidden lg:flex space-x-8 items-center font-medium">
             <Link 
               to="/edtech-s2025/about" 
@@ -134,13 +166,13 @@ export default function EdTech2025_header({ setIsMobileMenuOpen }) {
             <div className="hidden min-[746px]:flex items-center space-x-4">
               <Link 
                 to="/edtech-s2025/certificate" 
-                className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-md font-semibold text-white transition-colors duration-100"
+                className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-md font-semibold text-white transition-colors duration-200"
               >
                 CERTIFICATE
               </Link>
               <Link 
                 to="/edtech-s2025/partner" 
-                className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-md font-semibold text-white transition-colors duration-100"
+                className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-md font-semibold text-white transition-colors duration-200"
               >
                 PARTNER
               </Link>
@@ -298,6 +330,7 @@ export default function EdTech2025_header({ setIsMobileMenuOpen }) {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

@@ -5,7 +5,47 @@ import { Button } from "@/components/ui/button"
 import { useState, useRef, useEffect } from 'react';
 export default function Navbar() {
   const [isOurWorkDropdownOpen, setIsOurWorkDropdownOpen] = useState(false);
+  const [currentEventIndex, setCurrentEventIndex] = useState(0);
+  const [isFixed, setIsFixed] = useState(false);
   const dropdownRef = useRef(null);
+  const navRef = useRef(null);
+
+  const events = [
+    {
+      title: "ICT for Education: Network and Meeting",
+      date: "January 21-22 2025"
+    },
+    {
+      title: "EdTech summit 2026",
+      date: "January 21-22 2025"
+    },
+    {
+      title: "Digital Mission for 100k teacher",
+      date: "January 21-22 2025"
+    }
+  ];
+
+  // Auto-rotate events every 20 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentEventIndex((prevIndex) => (prevIndex + 1) % events.length);
+    }, 5000); // 5 seconds
+
+    return () => clearInterval(interval);
+  }, [events.length]);
+
+  // Handle scroll to make navbar fixed
+  useEffect(() => {
+    const handleScroll = () => {
+      if (navRef.current) {
+        const navOffsetTop = navRef.current.offsetTop;
+        setIsFixed(window.scrollY > navOffsetTop);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -17,27 +57,16 @@ export default function Navbar() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+  
   return (
-    <header className="text-white bg-[url('./assets/images/themes.png')] bg-cover bg-center">
+    <header className="text-white bg-transparent bg-cover bg-center">
       {/* Top Info Bar */}
-      <div className="flex justify-between items-center px-6 py-6 text-sm ">
-        <div className="flex space-x-6">
-          <div>
-            <span className="text-1xl font-medium">ICT for Education: Network and Meeting</span>
+      <div className="flex justify-between items-center px-6 py-6 text-sm bg-black/30 backdrop-blur-sm">
+        <div className="flex-1 overflow-hidden">
+          <div className="transition-all duration-500 ease-in-out">
+            <span className="text-1xl font-medium">{events[currentEventIndex].title}</span>
             <br />
-            <span className=" text-gray-300">January 21-22 2025</span>
-          </div>
-          
-          <div className='border-l-2 border-white px-3'>
-            <span className="text-1xl font-medium">EdTech summit 2026</span>
-            <br />
-            <span className=" text-gray-300">January 21-22 2025</span>
-          </div>
-          
-          <div className='border-l-2 border-white px-3'>
-            <span className="text-1xl font-medium">Digital Mission for 100k teacher</span>
-            <br />
-            <span className=" text-gray-300">January 21-22 2025</span>
+            <span className="text-gray-300">{events[currentEventIndex].date}</span>
           </div>
         </div>
         <div className="flex items-center space-x-3 pr-10">
@@ -49,8 +78,16 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Middle Logo */}
-      <div className="bg-white py-3">
+      {/* Placeholder to maintain layout when navbar becomes fixed */}
+      {isFixed && <div style={{ height: navRef.current?.offsetHeight }} />}
+
+      {/* Middle Logo and Navigation */}
+      <div 
+        ref={navRef}
+        className={`bg-white py-3 transition-all duration-300 ${
+          isFixed ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : 'relative'
+        }`}
+      >
         <div className="flex justify-between items-center px-52">
           <Link to="/">
             <img

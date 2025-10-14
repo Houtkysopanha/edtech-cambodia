@@ -4,15 +4,16 @@ import ICT4E_HeroSection from '@/components/section/ICT4E_HeroSection';
 import meeting_pic from '@/assets/images/ICT4E_2.png'; // Adjust the path as necessary
 const ICT4E_about = () => {
   return (
-    <div className="font-sans text-gray-800 bg-white min-h-screen">
+    <div className="font-sans text-gray-800 min-h-screen">
       {/* Hero Section */}
       <ICT4E_HeroSection />
 
       {/* Navigation Tabs */}
       <ICT4E_navbar activeTab="about-meeting" />
 
-      {/* Main Content */}
-      <main className="mx-auto px-8 py-12">
+      {/* Main Content with White Background */}
+      <div className="bg-white">
+        <main className="mx-auto px-8 py-12">
         <section className="mb-16">
           <h1 className="text-4xl font-bold text-center mb-8">
             អំពីកម្មវិធី
@@ -104,6 +105,7 @@ const ICT4E_about = () => {
           </section>
         </div>
       </main>
+      </div>
     </div>
   );
 };
