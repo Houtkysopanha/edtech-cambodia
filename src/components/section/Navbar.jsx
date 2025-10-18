@@ -3,6 +3,7 @@ import { FaFacebookF, FaYoutube, FaTiktok, FaChevronDown, FaChevronRight } from 
 import logo from '@/assets/images/edtech_logo.png'; 
 import { Button } from "@/components/ui/button"
 import { useState, useRef, useEffect } from 'react';
+import QuickLinks from '@/components/common/QuickLinks';
 export default function Navbar() {
   const [isOurWorkDropdownOpen, setIsOurWorkDropdownOpen] = useState(false);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
@@ -70,6 +71,7 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center space-x-3 pr-10">
+          <QuickLinks />
           <Link to="/contact" className="border-2 border-[bg-edtech-gradient] px-5 py-2 text-white font-bold rounded-[10px] shadow-md">Contact us</Link>
           <span className='font-bold'>| Follow us:</span>
           <FaFacebookF />
