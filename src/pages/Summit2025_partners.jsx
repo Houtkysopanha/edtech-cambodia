@@ -5,6 +5,11 @@ import Summit2025_navbar from '@/components/section/Summit2025_navbar';
 import Summit2025_HeroSection from '@/components/section/Summit2025_HeroSection';
 
 import moeys from '@/assets/images/MOEYS.png'
+import koicaImg from '@/assets/images/strat-partner/koica.png';
+import cellcardImg from '@/assets/images/strat-partner/cell.png';
+import unicefImg from '@/assets/images/strat-partner/uni.png';
+import unescoImg from '@/assets/images/strat-partner/unes.png';
+import cdriImg from '@/assets/images/strat-partner/cdri.png';
 
 const Summit2025_partners = () => {
 
@@ -87,21 +92,26 @@ const Summit2025_partners = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {/* First Row */}
                   {[
-                    { name: "KOICA", color: "bg-blue-50" },
-                    { name: "Cellcard", color: "bg-orange-50" },
-                    { name: "UNICEF", color: "bg-blue-50" },
-                    { name: "UNESCO", color: "bg-blue-50" }
+                    { name: "KOICA", img: koicaImg, color: "bg-blue-50" },
+                    { name: "Cellcard", img: cellcardImg, color: "bg-orange-50" },
+                    { name: "UNICEF", img: unicefImg, color: "bg-blue-50" },
+                    { name: "UNESCO", img: unescoImg, color: "bg-blue-50" },
+                    {name: "cdriImg", img: cdriImg,}
                   ].map((partner, idx) => (
                     <MOTION.div
                       key={idx}
-                      className="bg-white border border-gray-200 p-4 h-20 flex items-center justify-center hover:shadow-md transition-shadow duration-300"
+                      className="flex items-center justify-center transition-shadow duration-300"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1, duration: 0.6 }}
                     >
-                      <div className={`w-full h-full ${partner.color} flex items-center justify-center rounded`}>
-                        <span className="text-sm font-semibold text-gray-700">{partner.name}</span>
+                      <div className="flex justify-center">
+                  <div className="p-8 rounded-lg w-64 h-40 flex items-center justify-center">
+                      <div className="text-center">
+                        <img src={partner.img} alt={partner.img}  />
                       </div>
+                  </div>
+                </div>
                     </MOTION.div>
                   ))}
                 </div>
