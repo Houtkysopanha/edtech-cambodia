@@ -5,15 +5,16 @@ import ICT4ELogo from '@/assets/images/ICT4E_logo.png';
 
 const ICT4E_partner = () => {
   return (
-    <div className="font-sans text-gray-800 bg-white min-h-screen">
+    <div className="font-sans text-gray-800 min-h-screen">
       {/* Hero Section */}
       <ICT4E_HeroSection />
 
       {/* Navigation Tabs */}
       <ICT4E_navbar activeTab="registration-list" />
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-12 max-w-4xl">
+      {/* Main Content with White Background */}
+      <div className="bg-white">
+        <main className="container mx-auto px-4 py-12 max-w-4xl">
         <section className="mb-16">
           <h1 className="text-4xl font-bold text-center mb-8">
             ដៃគូសហការ
@@ -94,6 +95,7 @@ const ICT4E_partner = () => {
           </div>
         </section>
       </main>
+      </div>
     </div>
   );
 };

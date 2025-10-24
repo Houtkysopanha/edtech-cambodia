@@ -1,7 +1,12 @@
+import logo1 from '@/assets/images/MOEYS.png';
+import logo2 from '@/assets/images/openDevCam.png';
+import logo3 from '@/assets/images/logo-edtech.png';
+import logo4 from '@/assets/images/ICT4E_logo.png';
+import logo5 from '@/assets/images/B2B.png';
+
 export default function PartnerLogos() {
   const logos = [
-    '/assets/logo1.png', '/assets/logo2.png', '/assets/logo3.png',
-    '/assets/logo4.png', '/assets/logo5.png',
+    logo1, logo2, logo3, logo4, logo5,
   ];
 
   return (

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from '../layouts/DefaultLayout';
 import ICT4E_Layout from '../layouts/ICT4E_Layout';
 import EdTech2025Layout from '../layouts/EdTech2025_Layout';
+import ScrollToTop from '../components/common/ScrollToTop';
 import Home from '../pages/Home';
 import AboutUs from '../pages/Aboutus';
 import React from 'react';
@@ -15,9 +16,18 @@ import ICT4E_agenda from "@/pages/ICT4E_agenda";
 import ICT4E_contact from "@/pages/ICT4E_contact";
 import ICT4E_partner from "@/pages/ICT4E_partner";
 import Edtech2025Home from "@/pages/edtech-2025-home";
+import Edtech2025About from "@/pages/edtech-2025-about";
+import Edtech2025Agenda from "@/pages/edtech-2025-agenda";
+import EdTech2025Exhibitors from "@/pages/edtech-2025-exhibitors";
+import EdTech2025Contact from "@/pages/edtech-2025-contact";  
+import EdTech2025Partner from "@/pages/edtech-2025-partner";
+import Edtech2025Certificate from "@/pages/edtech-2025-certificate";
+import EdTech2025Award from "@/pages/edtech-2025-award";
+import EdTech2025Award1 from "@/pages/edtech-2025-award-1";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* EdTech Main Website Routes */}
         <Route element={<DefaultLayout />}>
@@ -32,11 +42,14 @@ export default function AppRoutes() {
         {/* EdTech S2025 Dedicated Routes - Separate layout */}
         <Route element={<EdTech2025Layout />}>
           <Route path="/edtech-s2025" element={<Edtech2025Home/>}/>
-          <Route path="/edtech-s2025/about" element={<div>EdTech S2025 About Page</div>}/>
-          <Route path="/edtech-s2025/agenda" element={<div>EdTech S2025 Agenda Page</div>}/>
-          <Route path="/edtech-s2025/sponsors" element={<div>EdTech S2025 Sponsors Page</div>}/>
-          <Route path="/edtech-s2025/awards" element={<div>EdTech S2025 Awards Page</div>}/>
-          <Route path="/edtech-s2025/contact" element={<div>EdTech S2025 Contact Page</div>}/>
+          <Route path="/edtech-s2025/about" element={<Edtech2025About/>}/>
+          <Route path="/edtech-s2025/agenda" element={<Edtech2025Agenda/>}/>
+          <Route path="/edtech-s2025/sponsors" element={<EdTech2025Exhibitors/>}/>
+          <Route path="/edtech-s2025/awards" element={<EdTech2025Award/>}/>
+          <Route path="/edtech-s2025/awards1" element={<EdTech2025Award1/>}/>
+          <Route path="/edtech-s2025/contact" element={<EdTech2025Contact/>}/>
+          <Route path="/edtech-s2025/partner" element={<EdTech2025Partner/>}/>
+          <Route path="/edtech-s2025/certificate" element={<Edtech2025Certificate/>}/>
         </Route>
 
         {/* ICT4E Dedicated Routes - No EdTech navbar/footer */}

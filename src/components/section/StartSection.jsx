@@ -1,6 +1,6 @@
 import { motion as MOTION } from 'framer-motion';
 
-export default function StatsSection() {
+export default function StartSection() {
   const stats = [
     { label: 'Teachers Trained', value: '50,000+', icon: '👨‍🏫' },
     { label: 'Participants', value: '60,000+', icon: '👥' },

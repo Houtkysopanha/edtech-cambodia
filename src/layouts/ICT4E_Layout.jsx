@@ -2,11 +2,11 @@
 import React from 'react';
 import ICT4E_footer from '../components/section/ICT4E_footer';
 import { Outlet } from 'react-router-dom';
-import ICT4E_Header from '@/components/section/ICT4E_header';
+import Navbar from '@/components/section/Navbar';
 export default function ICT4E_Layout() {
   return (
-    <div>
-      <ICT4E_Header />
+    <div className="bg-[url('./assets/images/ICT4E.png')] bg-cover bg-center bg-fixed">
+      <Navbar />
       <main className="min-h-screen">
         <Outlet />
       </main>
