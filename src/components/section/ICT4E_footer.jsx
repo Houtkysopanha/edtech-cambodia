@@ -70,22 +70,27 @@ const ICT4E_footer = () => {
         {/* Bottom Section - Follow Us on top, Copyright/Address and Links below */}
         <div className="space-y-4">
           {/* Follow Us Row */}
-          <div className="flex items-center space-x-4" style={{marginBottom: '2rem'}}>
-            <span className="text-white font-semibold">Follow Us:</span>
-            <div className="flex space-x-10">
-              <a href="#" className="text-white hover:text-blue-400 transition-colors">
-                <FaFacebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-white hover:text-red-400 transition-colors">
-                <FaYoutube className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-white hover:text-blue-300 transition-colors">
-                <FaTelegramPlane className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-white hover:text-pink-400 transition-colors">
-                <FaTiktok className="w-5 h-5" />
-              </a>
+          <div className="flex items-center justify-between" style={{marginBottom: '2rem'}}>
+            <div className="flex items-center space-x-4">
+              <span className="text-white font-semibold">Follow Us:</span>
+              <div className="flex space-x-10">
+                <a href="#" className="text-white hover:text-blue-400 transition-colors">
+                  <FaFacebook className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-white hover:text-red-400 transition-colors">
+                  <FaYoutube className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-white hover:text-blue-300 transition-colors">
+                  <FaTelegramPlane className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-white hover:text-pink-400 transition-colors">
+                  <FaTiktok className="w-5 h-5" />
+                </a>
+              </div>
             </div>
+            <Link to="/" className="text-blue-200 hover:text-yellow-400 text-sm transition-colors">
+              Back to EdTech Cambodia
+            </Link>
           </div>
           
           {/* Bottom Row - Copyright/Address and Policy Links */}

@@ -2,29 +2,43 @@ import { Link } from 'react-router-dom';
 import { FaFacebookF, FaYoutube, FaTiktok,FaTelegramPlane } from 'react-icons/fa';
 import logo from '@/assets/images/edtech_logo.png'; 
 import { Button } from "@/components/ui/button"
+import { useState, useEffect } from 'react';
 
 export default function ICT4E_Header() {
+  const [currentEventIndex, setCurrentEventIndex] = useState(0);
+
+  const events = [
+    {
+      title: "ICT for Education: Network and Meeting",
+      date: "January 21-22 2025"
+    },
+    {
+      title: "EdTech summit 2026",
+      date: "January 21-22 2025"
+    },
+    {
+      title: "Digital Mission for 100k teacher",
+      date: "January 21-22 2025"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentEventIndex((prevIndex) => (prevIndex + 1) % events.length);
+    }, 5000); // 5 seconds
+
+    return () => clearInterval(interval);
+  }, [events.length]);
+
   return (
     <header className="text-white bg-transparent bg-cover bg-center">
       {/* Top Info Bar */}
       <div className="flex justify-between items-center px-6 py-6 text-sm bg-black/50 backdrop-blur-md">
         <div className="flex space-x-6">
-          <div>
-            <span className="text-1xl font-medium">ICT for Education: Network and Meeting</span>
+          <div className="transition-all duration-500 ease-in-out">
+            <span className="text-1xl font-medium">{events[currentEventIndex].title}</span>
             <br />
-            <span className=" text-gray-300">January 21-22 2025</span>
-          </div>
-          
-          <div className='border-l-2 border-white px-3'>
-            <span className="text-1xl font-medium">EdTech summit 2026</span>
-            <br />
-            <span className=" text-gray-300">January 21-22 2025</span>
-          </div>
-          
-          <div className='border-l-2 border-white px-3'>
-            <span className="text-1xl font-medium">Digital Mission for 100k teacher</span>
-            <br />
-            <span className=" text-gray-300">January 21-22 2025</span>
+            <span className=" text-gray-300">{events[currentEventIndex].date}</span>
           </div>
         </div>
         <div className="flex items-center space-x-5 pr-10">
