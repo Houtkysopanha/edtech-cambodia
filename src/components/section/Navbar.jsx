@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaYoutube, FaTiktok, FaChevronDown } from 'react-icons/fa';
+import { FaFacebookF, FaYoutube, FaTiktok, FaChevronDown, FaBars, FaTimes } from 'react-icons/fa';
 import logo from '@/assets/images/edtech_logo.png'; 
 import { Button } from "@/components/ui/button"
 import { useState, useRef, useEffect } from 'react';
 import QuickLinks from '@/components/common/QuickLinks';
 export default function Navbar() {
   const [isOurWorkDropdownOpen, setIsOurWorkDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('programs'); // Track active tab
   const [isEdTechExpanded, setIsEdTechExpanded] = useState(true); // Track EdTech Summit expansion
   const [hoveredItem, setHoveredItem] = useState('edtech-summit-2025'); // Track hovered item for preview
@@ -39,6 +40,19 @@ export default function Navbar() {
     return () => clearInterval(interval);
   }, [events.length]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   // Handle scroll to make navbar fixed
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +66,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown when clicking outside
+  // Close dropdown and mobile menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       // Check if click is outside both the button and the dropdown menu
@@ -62,29 +76,51 @@ export default function Navbar() {
       if (isClickOutsideButton && isClickOutsideMenu) {
         setIsOurWorkDropdownOpen(false);
       }
+      
+      // Close mobile menu when clicking outside
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+      }
     }
+    
+    // Close mobile menu on ESC key
+    function handleEscapeKey(event) {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        setIsOurWorkDropdownOpen(false);
+      }
+    }
+    
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
   }, []);
   
   return (
     <header className="text-white bg-transparent bg-cover bg-center">
       {/* Top Info Bar */}
-      <div className="flex justify-between items-center px-6 py-6 text-sm bg-black/30 backdrop-blur-sm">
-        <div className="flex-1 overflow-hidden">
-          <div className="transition-all duration-500 ease-in-out">
-            <span className="text-1xl font-medium">{events[currentEventIndex].title}</span>
-            <br />
-            <span className="text-gray-300">{events[currentEventIndex].date}</span>
+      <div className="flex flex-col md:flex-row justify-between items-center px-4 md:px-6 py-4 md:py-6 text-sm bg-black/30 backdrop-blur-sm">
+        <div className="flex-1 overflow-hidden mb-2 md:mb-0">
+          <div className="transition-all duration-500 ease-in-out text-center md:text-left">
+            <span className="text-sm md:text-lg font-medium">{events[currentEventIndex].title}</span>
+            <br className="hidden md:block" />
+            <span className="text-gray-300 ml-2 md:ml-0">{events[currentEventIndex].date}</span>
           </div>
         </div>
-        <div className="flex items-center space-x-3 pr-10">
-          <QuickLinks />
-          <Link to="/contact" className="border-2 border-[bg-edtech-gradient] px-5 py-2 text-white font-bold rounded-[10px] shadow-md">Contact us</Link>
-          <span className='font-bold'>| Follow us:</span>
-          <FaFacebookF />
-          <FaYoutube />
-          <FaTiktok />
+        <div className="flex flex-wrap items-center justify-center md:justify-end space-x-2 md:space-x-3 md:pr-10">
+          <div className="hidden md:block">
+            <QuickLinks />
+          </div>
+          <Link to="/contact" className="border-2 border-[bg-edtech-gradient] px-3 md:px-5 py-1 md:py-2 text-white font-bold rounded-[10px] shadow-md text-xs md:text-sm">Contact us</Link>
+          <span className='font-bold hidden md:inline'>| Follow us:</span>
+          <div className="flex space-x-2">
+            <FaFacebookF className="cursor-pointer hover:text-blue-400" />
+            <FaYoutube className="cursor-pointer hover:text-red-400" />
+            <FaTiktok className="cursor-pointer hover:text-pink-400" />
+          </div>
         </div>
       </div>
 
@@ -98,85 +134,208 @@ export default function Navbar() {
           isFixed ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : 'relative'
         }`}
       >
-        <div className="flex justify-between items-center px-52">
+        <div className="flex justify-between items-center px-4 md:px-8 lg:px-52">
           <Link to="/">
             <img
               src={logo}
               alt="EdTech Cambodia Logo"
-              className="h-20 sm:h-20 cursor-pointer"
+              className="h-12 md:h-16 lg:h-20 cursor-pointer"
             />
           </Link>
-            <div className="flex justify-between text-[#0a1d53] items-center px-6 py-3 gap-10">
-              <nav className="flex space-x-8 text-sm sm:text-base font-semibold text-center">
-                <Link to="/about" className="khmer-text hover:text-yellow-400">អំពីយើង<br />About Us</Link>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex justify-between text-[#0a1d53] items-center px-6 py-3 gap-10">
+            <nav className="flex space-x-8 text-sm font-semibold text-center">
+              <Link to="/about" className="khmer-text hover:text-yellow-400 transition-colors">អំពីយើង<br />About Us</Link>
 
-                {/* Our Work Button */}
-                <button
-                  ref={dropdownRef}
-                  onClick={() => setIsOurWorkDropdownOpen(!isOurWorkDropdownOpen)}
-                  className="khmer-text hover:text-yellow-400 flex flex-col items-center focus:outline-none"
-                >
-                  <span>ការងាររបស់យើង</span>
-                  <span className="flex items-center gap-1">
-                    Our Work
-                    <FaChevronDown className={`text-xs transition-transform ${isOurWorkDropdownOpen ? 'rotate-180' : ''}`} />
-                  </span>
-                </button>
-              
-              <Link to="/news" className="khmer-text hover:text-yellow-400">ព័ត៌មាន<br />Our News</Link>
-            </nav>
+              {/* Our Work Button */}
+              <button
+                ref={dropdownRef}
+                onClick={() => setIsOurWorkDropdownOpen(!isOurWorkDropdownOpen)}
+                className="khmer-text hover:text-yellow-400 flex flex-col items-center focus:outline-none transition-colors"
+              >
+                <span>ការងាររបស់យើង</span>
+                <span className="flex items-center gap-1">
+                  Our Work
+                  <FaChevronDown className={`text-xs transition-transform ${isOurWorkDropdownOpen ? 'rotate-180' : ''}`} />
+                </span>
+              </button>
+            
+            <Link to="/news" className="khmer-text hover:text-yellow-400 transition-colors">ព័ត៌មាន<br />Our News</Link>
+          </nav>
            <Button>
              <Link
               to="/register"
-              className=" bg-edtech-gradient px-5 py-3 text-white font-bold rounded-[10px] shadow-md"
+              className="bg-edtech-gradient px-5 py-3 text-white font-bold rounded-[10px] shadow-md"
             >
               EDTECH MEMBERS
             </Link>
            </Button>
           </div>
+          
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`lg:hidden p-3 rounded-lg transition-all duration-200 transform ${
+              isMobileMenuOpen 
+                ? 'bg-red-100 text-red-600 rotate-90 scale-110' 
+                : 'text-[#0a1d53] hover:bg-gray-100 hover:scale-105'
+            }`}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
+        
+        {/* Mobile Navigation Menu */}
+        <div className={`lg:hidden bg-white border-t border-gray-200 shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <nav className="flex flex-col p-6 text-[#0a1d53] space-y-2">
+            {/* Quick Links in Mobile */}
+            <div className="pb-4 border-b border-gray-200 mb-4">
+              <h4 className="text-sm font-semibold text-gray-600 mb-3">QUICK ACCESS</h4>
+              <div className="flex justify-center">
+                <QuickLinks />
+              </div>
+            </div>
+            
+            <Link 
+              to="/about" 
+              className="khmer-text hover:text-yellow-400 transition-all duration-200 py-3 px-4 rounded-lg hover:bg-gray-50 flex items-center"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span className="text-lg">🏢</span>
+              <span className="ml-3">អំពីយើង / About Us</span>
+            </Link>
+            
+            <button
+              onClick={() => {
+                setIsOurWorkDropdownOpen(!isOurWorkDropdownOpen);
+              }}
+              className="khmer-text hover:text-yellow-400 flex items-center justify-between py-3 px-4 rounded-lg hover:bg-gray-50 transition-all duration-200 text-left w-full"
+            >
+              <div className="flex items-center">
+                <span className="text-lg">💼</span>
+                <span className="ml-3">ការងាររបស់យើង / Our Work</span>
+              </div>
+              <FaChevronDown className={`text-xs transition-transform duration-200 ${isOurWorkDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {/* Mobile Our Work Submenu */}
+            <div className={`ml-6 space-y-1 transition-all duration-300 ease-in-out overflow-hidden ${
+              isOurWorkDropdownOpen ? 'max-h-96 opacity-100 mb-2' : 'max-h-0 opacity-0'
+            }`}>
+              <Link 
+                to="/edtech-s2025" 
+                className="block py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-all duration-200"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsOurWorkDropdownOpen(false);
+                }}
+              >
+                📅 EdTech Summit 2025
+              </Link>
+              <Link 
+                to="/ict4e" 
+                className="block py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-all duration-200"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsOurWorkDropdownOpen(false);
+                }}
+              >
+                💻 ICT4E Program
+              </Link>
+              <Link 
+                to="/initiatives/digital-mission" 
+                className="block py-2 px-3 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-all duration-200"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsOurWorkDropdownOpen(false);
+                }}
+              >
+                🎯 Digital Mission 100k
+              </Link>
+            </div>
+            
+            <Link 
+              to="/news" 
+              className="khmer-text hover:text-yellow-400 transition-all duration-200 py-3 px-4 rounded-lg hover:bg-gray-50 flex items-center"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span className="text-lg">📰</span>
+              <span className="ml-3">ព័ត៌មាន / Our News</span>
+            </Link>
+            
+            <Link
+              to="/contact"
+              className="khmer-text hover:text-yellow-400 transition-all duration-200 py-3 px-4 rounded-lg hover:bg-gray-50 flex items-center"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span className="text-lg">📞</span>
+              <span className="ml-3">ទំនាក់ទំនង / Contact</span>
+            </Link>
+            
+            <div className="pt-4 border-t border-gray-200 mt-4">
+              <Link
+                to="/register"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 px-6 py-4 text-white font-bold rounded-xl shadow-lg text-center block transition-all duration-300 transform hover:scale-105"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                ✨ EDTECH MEMBERS
+              </Link>
+            </div>
+            
+            {/* Social Links in Mobile */}
+            <div className="flex justify-center space-x-6 pt-4 border-t border-gray-200 mt-4">
+              <FaFacebookF className="cursor-pointer hover:text-blue-600 transition-colors text-xl" />
+              <FaYoutube className="cursor-pointer hover:text-red-600 transition-colors text-xl" />
+              <FaTiktok className="cursor-pointer hover:text-pink-600 transition-colors text-xl" />
+            </div>
+          </nav>
         </div>
       </div>
 
-      {/* Full Width Dropdown Menu - Overlay Below Navbar */}
-      {isOurWorkDropdownOpen && (
-        <div ref={dropdownMenuRef} className={`${isFixed ? 'fixed' : 'absolute'} left-0 right-0 w-full bg-white shadow-xl border-t border-gray-200 z-40 ${isFixed ? 'top-24' : ''}`}>
-          <div className="w-full max-w-full px-10">
+      {/* Full Width Dropdown Menu - Only show on desktop */}
+      {isOurWorkDropdownOpen && !isMobileMenuOpen && (
+        <div ref={dropdownMenuRef} className={`hidden lg:block ${isFixed ? 'fixed' : 'absolute'} left-0 right-0 w-full bg-white shadow-xl border-t border-gray-200 z-40 ${isFixed ? 'top-24' : ''} transition-all duration-300 ease-in-out`}>
+          <div className="w-full max-w-full px-4 md:px-10">
             {/* Tab Navigation */}
             <div className="flex border-b border-gray-200 bg-gray-50">
               <button
                 onClick={() => setActiveTab('programs')}
-                className={`px-8 py-4 text-base font-semibold transition-all ${
+                className={`px-8 py-4 text-base font-semibold transition-all duration-200 ${
                   activeTab === 'programs'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-600 text-white transform scale-105'
+                    : 'text-gray-700 hover:bg-gray-200 hover:text-blue-600'
                 }`}
               >
-                Programs
+                📚 Programs
               </button>
               <button
                 onClick={() => setActiveTab('initiatives')}
-                className={`px-8 py-4 text-base font-semibold transition-all ${
+                className={`px-8 py-4 text-base font-semibold transition-all duration-200 ${
                   activeTab === 'initiatives'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-600 text-white transform scale-105'
+                    : 'text-gray-700 hover:bg-gray-200 hover:text-blue-600'
                 }`}
               >
-                Initiatives
+                🚀 Initiatives
               </button>
               <button
                 onClick={() => setActiveTab('resources')}
-                className={`px-8 py-4 text-base font-semibold transition-all ${
+                className={`px-8 py-4 text-base font-semibold transition-all duration-200 ${
                   activeTab === 'resources'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-600 text-white transform scale-105'
+                    : 'text-gray-700 hover:bg-gray-200 hover:text-blue-600'
                 }`}
               >
-                Resources
+                📖 Resources
               </button>
             </div>
 
             {/* Tab Content */}
-            <div className="grid grid-cols-2 gap-8 p-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 p-4 lg:p-10">
               {/* Left Side - Navigation */}
               <div className="space-y-3">
                 {activeTab === 'programs' && (
@@ -299,7 +458,7 @@ export default function Navbar() {
               </div>
 
               {/* Right Side - Dynamic Preview Content */}
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-lg">
+              <div className="bg-gradient-to-br from-blue-50 to-white p-4 lg:p-8 rounded-lg">
                 {/* Programs Content */}
                 {hoveredItem === 'edtech-summit-2025' && (
                   <div>

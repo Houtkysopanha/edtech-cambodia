@@ -1,116 +1,118 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { IoLocationSharp, IoCall, IoMail } from 'react-icons/io5'; // Icons for location, phone, mail
 import { FaFacebookF, FaYoutube, FaTelegramPlane, FaTiktok } from 'react-icons/fa'; // Icons for social media
-import logo from '@/assets/images/edtect_logo_white.png'; 
-import moeys from '@/assets/images/MOEYS.png'
+import logo from '@/assets/images/edtect_logo_white.png';
 export default function Footer() {
   return (
-     <div >
-      {/* Main content area - for demonstration purposes */}
-    
-
-      {/* Footer Component */}
-      <footer className="bg-blue-950 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Top Section: Logo and Description */}
-          <div className="text-center mb-12">
-            {/* Placeholder for EdTech Cambodia Logo */}
-            <img
-              src= {logo}
-              alt="EdTech Cambodia Logo"
-              className="mx-auto mb-4 rounded-md"
-            />
-            <p className="max-w-2xl mx-auto text-white">
-             Cambodia EdTech Summit 2025 is the country's first <br />
-            and largest event dedicated to transforming <br />
-          education through technology.
-            </p>
-            <div className="w-full h-[3px] bg-white my-8"></div> 
-          </div>
-
-          {/* Middle Section: Location, Quick Links, Supported By */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {/* Our Location */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <h3 className="text-xl font-semibold mb-4">Our Location</h3>
-              <ul className="space-y-3 text-gray-300">
-                <li className="flex items-center justify-center md:justify-start">
-                  <IoLocationSharp className="w-5 h-5 mr-3 text-blue-400" />
-                  <span>ABD, Fresh Norodom Blvd. Phnom Penh</span>
-                </li>
-                <li className="flex items-center justify-center md:justify-start">
-                  <IoCall className="w-5 h-5 mr-3 text-blue-400" />
-                  <span>+855 77 488 887</span>
-                </li>
-                <li className="flex items-center justify-center md:justify-start">
-                  <IoMail className="w-5 h-5 mr-3 text-blue-400" />
-                  <span>info@edtechcambodia.org</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Quick Links */}
-            <div className="flex flex-col items-center md:items-center text-start md:text-start">
-              <h3 className="text-xl text-start font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-3 text-gray-300">
-                <li><a href="#" className="hover:text-blue-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Our Work</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">News</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">EdTech Member</a></li>
-              </ul>
-            </div>
-
-            {/* Supported By */}
-            <div className="flex flex-col items-center md:items-end text-center md:text-right">
-              <h3 className="text-xl font-semibold mb-4">SUPPORTED BY</h3>
-              {/* Placeholder for Supported By Logo */}
+    <footer className="bg-[#0b1e51] text-white">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          
+          {/* Left Section - Logo and Description */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
               <img
-                src={moeys}
-                alt="Supported By Logo"
-                className="rounded-md"
+                src={logo}
+                alt="EdTech Cambodia Logo"
+                className="h-16 w-auto mb-4"
               />
             </div>
-          </div>
-
-          <div className="w-full h-px bg-gray-400 my-8"></div> {/* Divider */}
-          <div className="mb-6 md:mb-0 text-center">
-              <h3 className="text-xl font-semibold mb-4">Follow Us:</h3>
-              <div className="flex justify-center md:justify-center space-x-6">
-                <a href="#" className="text-gray-300 flex space-x-1 items-center font-bold hover:text-blue-400 transition-colors">
-                  <FaFacebookF className="w-7 h-7" /> 
-                  <span>Facebook</span>
-                </a>
-                <a href="#" className="text-gray-300 flex space-x-1 items-center font-bold hover:text-blue-400 transition-colors">
-                  <FaYoutube className="w-7 h-7" />
-                   <span>YoutTube</span>
-                </a>
-                <a href="#" className="text-gray-300 flex space-x-1 items-center font-bold hover:text-blue-400 transition-colors">
-                  <FaTelegramPlane className="w-7 h-7" />
-                   <span>Telegram</span>
-                </a>
-                <a href="#" className="text-gray-300 flex space-x-1 items-center font-bold hover:text-blue-400 transition-colors">
-                  <FaTiktok className="w-7 h-7" />
-                   <span>TikTok</span>
-                </a>
+            
+            {/* Contact Information */}
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start space-x-3">
+                <IoLocationSharp className="w-5 h-5 mt-1 text-white flex-shrink-0" />
+                <span className="text-gray-200">#80, Preah Norodom Blvd. Phnom Penh</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <IoCall className="w-5 h-5 text-white flex-shrink-0" />
+                <span className="text-gray-200">+855 77 488 887</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <IoMail className="w-5 h-5 text-white flex-shrink-0" />
+                <span className="text-gray-200">info@edtechcambodia.org</span>
               </div>
             </div>
-          {/* Bottom Section: Follow Us and Copyright/Legal */}
-          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mt-10">
-            {/* Follow Us */}
-
-            {/* Copyright and Legal Links */}
-    
-              <div>
-                 <p className="mb-2 md:mb-0">&copy; 2023 Abatenga Ltd. <span className="mx-2 hidden md:inline">|</span> 8902 Preston Rd. Inglewood, Maine 98380</p>
-              </div>
-            <div>
-                <p className="mb-2 md:mb-0"> Privacy Policy Terms and Conditions</p>
+            
+            {/* Description */}
+            <p className="text-gray-200 leading-relaxed">
+              Cambodia EdTech Summit 2025 is the country's first and largest event dedicated to transforming education through technology.
+            </p>
+          </div>
+          
+          {/* Middle Section - Navigation Links */}
+          <div className="lg:col-span-1">
+            <h3 className="text-xl font-semibold mb-6 text-white">
+              The First Cambodia EdTech Summit
+            </h3>
+            <nav className="space-y-4">
+              <Link to="/edtech-s2025/about" className="block text-gray-200 hover:text-white transition-colors duration-200">
+                About
+              </Link>
+              <Link to="/edtech-s2025/agenda" className="block text-gray-200 hover:text-white transition-colors duration-200">
+                Agenda
+              </Link>
+              <Link to="/edtech-s2025/partners" className="block text-gray-200 hover:text-white transition-colors duration-200">
+                Sponsors & Exhibitors
+              </Link>
+              <Link to="/edtech-s2025/awards" className="block text-gray-200 hover:text-white transition-colors duration-200">
+                Awards
+              </Link>
+              <Link to="/edtech-s2025/contact" className="block text-gray-200 hover:text-white transition-colors duration-200">
+                Contact
+              </Link>
+            </nav>
+          </div>
+          
+          {/* Right Section - Social Media */}
+          <div className="lg:col-span-1 ">
+            <h3 className="text-xl font-semibold mb-6 text-white">
+              Follow Us:
+            </h3>
+            <div className="space-y-4 text-end">
+              <a href="#" className="flex items-center space-x-3 text-gray-200 hover:text-white transition-colors duration-200 group">
+                <FaFacebookF className="w-5 h-5" />
+                <span>Facebook</span>
+              </a>
+              <a href="#" className="flex items-center space-x-3 text-gray-200 hover:text-white transition-colors duration-200 group">
+                <FaYoutube className="w-5 h-5" />
+                <span>YouTube</span>
+              </a>
+              <a href="#" className="flex items-center space-x-3 text-gray-200 hover:text-white transition-colors duration-200 group">
+                <FaTelegramPlane className="w-5 h-5" />
+                <span>Telegram</span>
+              </a>
+              <a href="#" className="flex items-center space-x-3 text-gray-200 hover:text-white transition-colors duration-200 group">
+                <FaTiktok className="w-5 h-5" />
+                <span>TikTok</span>
+              </a>
             </div>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+      
+      {/* Bottom Section - Copyright */}
+      <div className="bg-gray-100 border-t">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600">
+            <p className="mb-2 sm:mb-0">
+              Copyright © 2025 EdTech Cambodia | Designed by{' '}
+              <span className="text-red-500 font-semibold">EdTech Team</span>
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="hover:text-gray-900 transition-colors duration-200">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-gray-900 transition-colors duration-200">
+                Terms and Conditions
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   );
 }
